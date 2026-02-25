@@ -1,25 +1,63 @@
 "use client";
-import api from "../../../services/api";
 
-export default function Airtime() {
+import { useState } from "react";
+import AuthGuard from "../../../components/AuthGuard";
+import { useAuth } from "../../../context/AuthContext";
+import { buyAirtime } from "../../../services/vtu.service";
+
+function AirtimeContent() {
+  const { refreshWallet } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
   const submit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
+    setError("");
     const f = e.target;
 
-    await api.post("/vtu/airtime", {
-      phone: f.phone.value,
-      amount: Number(f.amount.value),
-    });
-
-    alert("Airtime sent successfully");
+    try {
+      await buyAirtime({
+        phone: f.phone.value,
+        amount: Number(f.amount.value),
+      });
+      setMessage("Airtime sent successfully!");
+      await refreshWallet();
+      f.reset();
+    } catch (err) {
+      setError(err.response?.data?.message || "Airtime purchase failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form onSubmit={submit} className="card">
-      <h2 className="text-xl font-bold mb-4">Buy Airtime</h2>
-      <input name="phone" placeholder="Phone number" className="input" />
-      <input name="amount" placeholder="Amount" className="input" />
-      <button className="btn w-full">Buy Airtime</button>
-    </form>
+    <div className="max-w-lg mx-auto py-12 px-4">
+      <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-8">Buy Airtime</h1>
+      <form onSubmit={submit} className="glass p-8 rounded-2xl shadow-md space-y-6">
+        {message && <div className="bg-green-100 text-green-700 px-4 py-3 rounded">{message}</div>}
+        {error && <div className="bg-red-100 text-red-700 px-4 py-3 rounded">{error}</div>}
+
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Phone Number</label>
+          <input name="phone" placeholder="08012345678" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Amount (₦)</label>
+          <input name="amount" type="number" min="50" placeholder="e.g. 500" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
+        </div>
+
+        <button type="submit" disabled={loading} className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition disabled:opacity-50">
+          {loading ? "Processing..." : "Buy Airtime"}
+        </button>
+      </form>
+    </div>
   );
+}
+
+export default function Airtime() {
+  return <AuthGuard><AirtimeContent /></AuthGuard>;
 }

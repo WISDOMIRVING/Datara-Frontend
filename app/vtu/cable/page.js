@@ -1,38 +1,73 @@
 "use client";
-import api from "../../../services/api";
 
-export default function Cable() {
+import { useState } from "react";
+import AuthGuard from "../../../components/AuthGuard";
+import { useAuth } from "../../../context/AuthContext";
+import { buyCable } from "../../../services/vtu.service";
+
+function CableContent() {
+  const { refreshWallet } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
   const submit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
+    setError("");
     const f = e.target;
 
-    await api.post("/vtu/cable", {
-      provider: f.provider.value,
-      iuc: f.iuc.value,
-      amount: Number(f.amount.value),
-    });
-
-    alert("Cable subscription successful");
+    try {
+      await buyCable({
+        provider: f.provider.value,
+        iuc: f.iuc.value,
+        amount: Number(f.amount.value),
+      });
+      setMessage("Cable subscription successful!");
+      await refreshWallet();
+      f.reset();
+    } catch (err) {
+      setError(err.response?.data?.message || "Cable subscription failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form onSubmit={submit} className="card">
-      <h2 className="text-xl font-bold mb-4">Cable Subscription</h2>
+    <div className="max-w-lg mx-auto py-12 px-4">
+      <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-8">Cable TV Subscription</h1>
+      <form onSubmit={submit} className="glass p-8 rounded-2xl shadow-md space-y-6">
+        {message && <div className="bg-green-100 text-green-700 px-4 py-3 rounded">{message}</div>}
+        {error && <div className="bg-red-100 text-red-700 px-4 py-3 rounded">{error}</div>}
 
-      <select name="provider" className="input">
-        <option value="DSTV">DSTV</option>
-        <option value="GOTV">GOTV</option>
-        <option value="STARTIMES">STARTIMES</option>
-      </select>
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Provider</label>
+          <select name="provider" className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" required>
+            <option value="DSTV">DSTV</option>
+            <option value="GOTV">GOTV</option>
+            <option value="STARTIMES">STARTIMES</option>
+          </select>
+        </div>
 
-      <input
-        name="iuc"
-        placeholder="IUC / Smartcard number"
-        className="input"
-      />
-      <input name="amount" placeholder="Amount" className="input" />
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">IUC / Smartcard Number</label>
+          <input name="iuc" placeholder="e.g. 1234567890" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
+        </div>
 
-      <button className="btn w-full">Subscribe</button>
-    </form>
+        <div>
+          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Amount (₦)</label>
+          <input name="amount" type="number" min="1" placeholder="e.g. 3600" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
+        </div>
+
+        <button type="submit" disabled={loading} className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition disabled:opacity-50">
+          {loading ? "Processing..." : "Subscribe"}
+        </button>
+      </form>
+    </div>
   );
+}
+
+export default function Cable() {
+  return <AuthGuard><CableContent /></AuthGuard>;
 }
