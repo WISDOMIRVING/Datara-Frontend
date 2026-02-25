@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { topUpWallet } from "@/services/wallet.service";
+import { topUpWallet } from "../services/wallet.service";
 
 export default function WalletTopUp({ onUpdate }) {
   const [amount, setAmount] = useState("");

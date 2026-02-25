@@ -230,67 +230,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-1 md:col-span-2">
-              <h3 className="text-white text-2xl font-bold mb-4">
-                Datara<span className="text-cyan-500">.</span>
-              </h3>
-              <p className="text-sm max-w-xs leading-relaxed">
-                Your trusted partner for affordable data, airtime, and utility
-                bill payments. Fast, secure, and reliable.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/about" className="hover:text-white transition">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-white transition"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/pricing" className="hover:text-white transition">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:text-white transition">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="text-center pt-8 border-t border-gray-800 text-sm">
-            <p>&copy; 2024 Datara. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }

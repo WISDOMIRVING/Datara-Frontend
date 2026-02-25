@@ -39,8 +39,8 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
-  background-color: var(--bg-primary); /* Light gray background */
-  color: var(--text-primary); /* Default text color */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   scroll-behavior: smooth;
 }
 
