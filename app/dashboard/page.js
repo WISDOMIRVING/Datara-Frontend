@@ -123,9 +123,9 @@ function DashboardContent() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] transition-colors duration-300 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-blue-900 text-white hidden md:block">
+      <aside className="w-64 bg-blue-900 text-white hidden md:flex md:flex-col">
         <div className="p-6 text-2xl font-bold">Datara.</div>
-        <nav className="mt-6 px-4 space-y-2">
+        <nav className="mt-6 px-4 space-y-2 flex-1">
           <Link href="/dashboard" className="block w-full text-left py-2.5 px-4 rounded bg-blue-800">
             Dashboard
           </Link>
@@ -148,24 +148,37 @@ function DashboardContent() {
             Settings
           </Link>
         </nav>
+        <div className="px-4 pb-6">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-2 py-2.5 px-4 rounded text-red-300 hover:bg-red-500/20 hover:text-white transition font-medium text-left"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Logout
+          </button>
+        </div>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 p-8">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">
-            Dashboard
-          </h1>
-          <div className="flex items-center gap-4">
-            <span className="text-[var(--text-primary)] opacity-80">
-              Welcome, {user?.name}
-            </span>
-            <button
-              onClick={handleLogout}
-              className="text-sm text-red-500 hover:underline"
-            >
-              Logout
-            </button>
+        {/* User Profile Welcome Section */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-900 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg ring-4 ring-blue-100 dark:ring-blue-900/30">
+            {user?.name
+              ? user.name.trim().split(" ").length >= 2
+                ? (user.name.trim().split(" ")[0][0] + user.name.trim().split(" ")[1][0]).toUpperCase()
+                : user.name.trim()[0].toUpperCase()
+              : "U"}
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">
+              Welcome back, {user?.name?.split(" ")[0] || "User"} 👋
+            </h1>
+            <p className="text-sm text-[var(--text-primary)] opacity-60">
+              {user?.email || "Manage your account and services"}
+            </p>
           </div>
         </div>
 

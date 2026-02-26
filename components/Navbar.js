@@ -2,16 +2,15 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const router = useRouter();
+  const { user, isAuthenticated, isLoading, logoutUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
     if (
       localStorage.getItem("theme") === "dark" ||
       (!("theme" in localStorage) &&
@@ -38,10 +37,19 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    logoutUser();
     router.push("/login");
     router.refresh();
+  };
+
+  // Get user initials for avatar
+  const getInitials = (name) => {
+    if (!name) return "U";
+    const parts = name.trim().split(" ");
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return parts[0][0].toUpperCase();
   };
 
   return (
@@ -139,14 +147,28 @@ export default function Navbar() {
                 </svg>
               )}
             </button>
-            {isAuthenticated ? (
-              <button
-                onClick={handleLogout}
-                className="text-red-600 font-medium hover:underline"
-              >
-                Logout
-              </button>
-            ) : (
+            {!isLoading && isAuthenticated ? (
+              <div className="flex items-center space-x-3">
+                {/* User Profile Indicator */}
+                <Link
+                  href="/dashboard"
+                  className="flex items-center space-x-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 px-3 py-1.5 rounded-full transition"
+                >
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-900 to-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md">
+                    {getInitials(user?.name)}
+                  </div>
+                  <span className="text-sm font-medium text-blue-900 dark:text-blue-200 max-w-[120px] truncate">
+                    {user?.name || "User"}
+                  </span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-red-600 font-medium text-sm hover:underline"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : !isLoading ? (
               <>
                 <Link
                   href="/login"
@@ -161,7 +183,7 @@ export default function Navbar() {
                   Register
                 </Link>
               </>
-            )}
+            ) : null}
           </div>
 
           {/* Mobile menu button */}
@@ -267,14 +289,31 @@ export default function Navbar() {
               Help
             </Link>
             <div className="pt-4 flex flex-col space-y-2 px-3">
-              {isAuthenticated ? (
-                <button
-                  onClick={handleLogout}
-                  className="w-full text-center border border-red-600 text-red-600 py-2 rounded-md font-medium"
-                >
-                  Logout
-                </button>
-              ) : (
+              {!isLoading && isAuthenticated ? (
+                <>
+                  {/* Mobile User Profile */}
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center space-x-3 py-2 px-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
+                  >
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-cyan-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md">
+                      {getInitials(user?.name)}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">
+                        {user?.name || "User"}
+                      </p>
+                      <p className="text-xs text-gray-500">Go to Dashboard</p>
+                    </div>
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-center border border-red-600 text-red-600 py-2 rounded-md font-medium"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : !isLoading ? (
                 <>
                   <Link
                     href="/login"
@@ -289,7 +328,7 @@ export default function Navbar() {
                     Register
                   </Link>
                 </>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
