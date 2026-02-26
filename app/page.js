@@ -4,20 +4,20 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* 1. Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden pt-20 pb-24 lg:pt-32 lg:pb-40">
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden pt-20 pb-16 sm:pb-24 lg:pt-32 lg:pb-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <div className="inline-block px-4 py-1 rounded-full bg-blue-800/50 border border-blue-700 text-cyan-400 text-sm font-semibold mb-6">
                 🚀 Best VTU Platform in Nigeria
               </div>
-              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6">
                 Seamless Data & <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
                   Bill Payments
                 </span>
               </h1>
-              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-base sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Experience instant recharge, affordable data plans, and
                 zero-stress bill payments. Join thousands of smart users today.
               </p>
@@ -37,8 +37,8 @@ export default function Home() {
               </div>
             </div>
             {/* Hero Image Placeholder */}
-            <div className="relative lg:h-[500px] w-full flex items-center justify-center perspective-1000">
-              <div className="relative w-full max-w-md aspect-square bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-3xl rotate-3 shadow-2xl flex items-center justify-center border-4 border-white/10 backdrop-blur-md transform hover:rotate-0 transition duration-500">
+            <div className="relative lg:h-[500px] w-full flex items-center justify-center perspective-1000 hidden sm:flex">
+              <div className="relative w-full max-w-sm lg:max-w-md aspect-square bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-3xl rotate-3 shadow-2xl flex items-center justify-center border-4 border-white/10 backdrop-blur-md transform hover:rotate-0 transition duration-500">
                 <div className="absolute inset-0 bg-white/5 rounded-3xl"></div>
                 <div className="text-center">
                   <span className="text-9xl drop-shadow-lg filter">📱</span>
@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       {/* 2. Features Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-16 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -107,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* 3. Services Overview Section */}
-      <section className="py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1 grid grid-cols-2 gap-6">
@@ -182,13 +182,13 @@ export default function Home() {
       </section>
 
       {/* 4. CTA / Testimonial Section */}
-      <section className="py-24 bg-blue-900 text-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-blue-900 text-white relative overflow-hidden">
         {/* Decorative circles */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-blue-800 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-cyan-800 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-x-1/2 translate-y-1/2"></div>
 
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8">
             Join Over 10,000 Happy Users
           </h2>
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">

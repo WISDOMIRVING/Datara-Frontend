@@ -256,45 +256,51 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-lg">
+          <div className="px-4 pt-3 pb-4 space-y-1">
             <Link
               href="/"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               About
             </Link>
             <Link
               href="/services"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Services
             </Link>
             <Link
               href="/pricing"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Pricing
             </Link>
             <Link
               href="/help"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Help
             </Link>
-            <div className="pt-4 flex flex-col space-y-2 px-3">
+            <div className="pt-4 flex flex-col space-y-2.5 border-t border-gray-100 dark:border-gray-800 mt-2">
               {!isLoading && isAuthenticated ? (
                 <>
                   {/* Mobile User Profile */}
                   <Link
                     href="/dashboard"
-                    className="flex items-center space-x-3 py-2 px-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center space-x-3 py-2.5 px-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
                   >
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-cyan-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md">
                       {getInitials(user?.name)}
@@ -303,12 +309,12 @@ export default function Navbar() {
                       <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">
                         {user?.name || "User"}
                       </p>
-                      <p className="text-xs text-gray-500">Go to Dashboard</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Go to Dashboard</p>
                     </div>
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-center border border-red-600 text-red-600 py-2 rounded-md font-medium"
+                    className="w-full text-center border border-red-500 text-red-500 py-2.5 rounded-lg font-medium hover:bg-red-50 dark:hover:bg-red-900/20 transition"
                   >
                     Logout
                   </button>
@@ -317,13 +323,15 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/login"
-                    className="w-full text-center border border-blue-900 text-blue-900 py-2 rounded-md font-medium"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full text-center border border-blue-900 dark:border-blue-400 text-blue-900 dark:text-blue-400 py-2.5 rounded-lg font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition"
                   >
                     Login
                   </Link>
                   <Link
                     href="/register"
-                    className="w-full text-center bg-blue-900 text-white py-2 rounded-md font-medium"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full text-center bg-blue-900 text-white py-2.5 rounded-lg font-medium hover:bg-blue-800 transition"
                   >
                     Register
                   </Link>
