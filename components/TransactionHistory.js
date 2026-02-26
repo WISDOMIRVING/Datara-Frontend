@@ -37,12 +37,54 @@ export default function TransactionHistory() {
     },
   ];
 
+  const statusStyle = (status) => {
+    if (status === "Success")
+      return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
+    if (status === "Pending")
+      return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400";
+    return "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
+  };
+
   return (
-    <div className="glass rounded-2xl p-6 overflow-hidden shadow-sm">
-      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+    <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm">
+      <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-3 sm:mb-4">
         Recent Transactions
       </h3>
-      <div className="overflow-x-auto">
+
+      {/* Mobile: Card Layout */}
+      <div className="sm:hidden space-y-3">
+        {transactions.map((trx, idx) => (
+          <div
+            key={idx}
+            className="border border-gray-100 dark:border-gray-800 rounded-lg p-3"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-[var(--text-primary)]">
+                {trx.service}
+              </span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs font-bold ${statusStyle(trx.status)}`}
+              >
+                {trx.status}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-base font-bold text-[var(--text-primary)]">
+                {trx.amount}
+              </span>
+              <span className="text-xs text-[var(--text-primary)] opacity-50">
+                {trx.date}
+              </span>
+            </div>
+            <p className="text-xs text-[var(--text-primary)] opacity-40 mt-1">
+              {trx.id}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: Table Layout */}
+      <div className="hidden sm:block">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="text-[var(--text-primary)] opacity-70 border-b border-gray-200 dark:border-gray-700">
@@ -67,13 +109,7 @@ export default function TransactionHistory() {
                 <td className="py-3 px-4 text-sm opacity-80">{trx.date}</td>
                 <td className="py-3 px-4 text-sm">
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-bold ${
-                      trx.status === "Success"
-                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                        : trx.status === "Pending"
-                          ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
-                          : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                    }`}
+                    className={`px-2 py-1 rounded-full text-xs font-bold ${statusStyle(trx.status)}`}
                   >
                     {trx.status}
                   </span>
