@@ -11,6 +11,7 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -24,8 +25,25 @@ export default function Register() {
     setLoading(true);
     setError("");
 
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      setLoading(false);
+      return;
+    }
+
     try {
-      await register(formData);
+      await register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
       // Redirect to login page after successful registration
       router.push("/login");
     } catch (err) {
@@ -37,7 +55,7 @@ export default function Register() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-6 sm:p-8">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
           Create Account
         </h2>
@@ -83,7 +101,33 @@ export default function Register() {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="••••••••"
               required
+              minLength={6}
             />
+          </div>
+          <div>
+            <label className="block text-gray-700 mb-2">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${formData.confirmPassword &&
+                  formData.password !== formData.confirmPassword
+                  ? "border-red-400 focus:border-red-500"
+                  : "focus:border-blue-500"
+                }`}
+              placeholder="••••••••"
+              required
+              minLength={6}
+            />
+            {formData.confirmPassword &&
+              formData.password !== formData.confirmPassword && (
+                <p className="text-xs text-red-500 mt-1">
+                  Passwords do not match
+                </p>
+              )}
           </div>
           <button
             type="submit"
