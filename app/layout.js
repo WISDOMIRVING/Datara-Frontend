@@ -12,10 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900">
+      <body className="bg-gray-50 text-gray-900 overflow-x-hidden">
         <AuthProvider>
           <Navbar />
-          <main className="pt-16 min-h-screen">{children}</main>
+          <main className="pt-16 min-h-screen overflow-x-hidden">{children}</main>
           <Footer />
         </AuthProvider>
       </body>

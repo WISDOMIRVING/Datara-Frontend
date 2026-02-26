@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen font-sans">
+    <div className="flex flex-col min-h-screen font-sans overflow-x-hidden">
       {/* 1. Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden pt-20 pb-16 sm:pb-24 lg:pt-32 lg:pb-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -12,7 +12,7 @@ export default function Home() {
                 🚀 Best VTU Platform in Nigeria
               </div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6">
-                Seamless Data & <br />
+                Seamless Data &{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
                   Bill Payments
                 </span>
@@ -24,13 +24,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   href="/register"
-                  className="bg-cyan-500 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-400 transition shadow-lg hover:shadow-cyan-500/25"
+                  className="bg-cyan-500 text-blue-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-cyan-400 transition shadow-lg hover:shadow-cyan-500/25 text-center"
                 >
                   Get Started
                 </Link>
                 <Link
                   href="/services"
-                  className="border border-white/30 bg-white/5 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition"
+                  className="border border-white/30 bg-white/5 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white/10 transition text-center"
                 >
                   View Plans
                 </Link>
@@ -109,8 +109,8 @@ export default function Home() {
       {/* 3. Services Overview Section */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4 sm:gap-6">
               <div className="bg-blue-50 p-8 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
                 <span className="text-5xl block mb-4">📶</span>
                 <h4 className="font-bold text-gray-900 text-lg">Cheap Data</h4>
@@ -196,7 +196,7 @@ export default function Home() {
             free, secure, and takes less than a minute.
           </p>
 
-          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl mb-12 border border-white/10 max-w-2xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl mb-8 sm:mb-12 border border-white/10 max-w-2xl mx-auto">
             <div className="flex justify-center mb-4 text-yellow-400 text-2xl">
               ★★★★★
             </div>
@@ -216,13 +216,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/register"
-              className="bg-white text-blue-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-xl transform hover:-translate-y-1"
+              className="bg-white text-blue-900 px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition shadow-xl transform hover:-translate-y-1 text-center"
             >
               Create Free Account
             </Link>
             <Link
               href="/contact"
-              className="border border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition"
+              className="border border-white/30 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white/10 transition text-center"
             >
               Contact Sales
             </Link>
