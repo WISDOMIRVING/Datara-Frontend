@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen font-sans overflow-x-hidden">
+    <div className="flex flex-col min-h-screen font-sans">
       {/* 1. Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden pt-20 pb-16 sm:pb-24 lg:pt-32 lg:pb-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="text-center lg:text-left">
               <div className="inline-block px-4 py-1 rounded-full bg-blue-800/50 border border-blue-700 text-cyan-400 text-sm font-semibold mb-6">
                 🚀 Best VTU Platform in Nigeria
@@ -37,8 +37,8 @@ export default function Home() {
               </div>
             </div>
             {/* Hero Image Placeholder */}
-            <div className="relative lg:h-[500px] w-full flex items-center justify-center perspective-1000 hidden sm:flex">
-              <div className="relative w-full max-w-sm lg:max-w-md aspect-square bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-3xl rotate-3 shadow-2xl flex items-center justify-center border-4 border-white/10 backdrop-blur-md transform hover:rotate-0 transition duration-500">
+            <div className="relative lg:h-[500px] w-full flex items-center justify-center hidden sm:flex">
+              <div className="relative w-4/5 max-w-xs sm:max-w-sm lg:max-w-md aspect-square bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-3xl rotate-3 shadow-2xl flex items-center justify-center border-4 border-white/10 backdrop-blur-md transform hover:rotate-0 transition duration-500">
                 <div className="absolute inset-0 bg-white/5 rounded-3xl"></div>
                 <div className="text-center">
                   <span className="text-9xl drop-shadow-lg filter">📱</span>
@@ -55,7 +55,7 @@ export default function Home() {
       {/* 2. Features Section */}
       <section className="py-16 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why Choose Datara?
             </h2>
@@ -65,8 +65,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+            <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 text-blue-600 group-hover:scale-110 transition">
                 ⚡
               </div>
@@ -78,7 +78,7 @@ export default function Home() {
                 within seconds of purchase, 24/7.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
+            <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 text-blue-600 group-hover:scale-110 transition">
                 🛡️
               </div>
@@ -90,7 +90,7 @@ export default function Home() {
                 encryption. We prioritize your security.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
+            <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 group">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 text-blue-600 group-hover:scale-110 transition">
                 📞
               </div>
@@ -110,31 +110,31 @@ export default function Home() {
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4 sm:gap-6">
-              <div className="bg-blue-50 p-8 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-                <span className="text-5xl block mb-4">📶</span>
-                <h4 className="font-bold text-gray-900 text-lg">Cheap Data</h4>
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-3 sm:gap-6">
+              <div className="bg-blue-50 p-5 sm:p-8 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <span className="text-4xl sm:text-5xl block mb-3 sm:mb-4">📶</span>
+                <h4 className="font-bold text-gray-900 text-base sm:text-lg">Cheap Data</h4>
               </div>
-              <div className="bg-green-50 p-8 rounded-2xl text-center mt-8 hover:-translate-y-1 transition duration-300">
-                <span className="text-5xl block mb-4">📱</span>
-                <h4 className="font-bold text-gray-900 text-lg">
+              <div className="bg-green-50 p-5 sm:p-8 rounded-2xl text-center sm:mt-8 hover:-translate-y-1 transition duration-300">
+                <span className="text-4xl sm:text-5xl block mb-3 sm:mb-4">📱</span>
+                <h4 className="font-bold text-gray-900 text-base sm:text-lg">
                   Airtime Top-up
                 </h4>
               </div>
-              <div className="bg-purple-50 p-8 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
-                <span className="text-5xl block mb-4">📺</span>
-                <h4 className="font-bold text-gray-900 text-lg">Cable TV</h4>
+              <div className="bg-purple-50 p-5 sm:p-8 rounded-2xl text-center hover:-translate-y-1 transition duration-300">
+                <span className="text-4xl sm:text-5xl block mb-3 sm:mb-4">📺</span>
+                <h4 className="font-bold text-gray-900 text-base sm:text-lg">Cable TV</h4>
               </div>
-              <div className="bg-yellow-50 p-8 rounded-2xl text-center mt-8 hover:-translate-y-1 transition duration-300">
-                <span className="text-5xl block mb-4">💡</span>
-                <h4 className="font-bold text-gray-900 text-lg">Electricity</h4>
+              <div className="bg-yellow-50 p-5 sm:p-8 rounded-2xl text-center sm:mt-8 hover:-translate-y-1 transition duration-300">
+                <span className="text-4xl sm:text-5xl block mb-3 sm:mb-4">💡</span>
+                <h4 className="font-bold text-gray-900 text-base sm:text-lg">Electricity</h4>
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Everything You Need in One Place
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 Stop jumping between apps. Datara brings all your essential bill
                 payments and recharge needs into one secure, easy-to-use
                 platform. We offer the best rates in the market.
@@ -148,9 +148,9 @@ export default function Home() {
                 ].map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-center text-gray-700 font-medium"
+                    className="flex items-start text-sm sm:text-base text-gray-700 font-medium"
                   >
-                    <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3 text-xs">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-2 sm:mr-3 text-xs flex-shrink-0 mt-0.5">
                       ✓
                     </div>
                     {item}
@@ -191,7 +191,7 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8">
             Join Over 10,000 Happy Users
           </h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto">
             Start saving on your data and bill payments today. Registration is
             free, secure, and takes less than a minute.
           </p>
