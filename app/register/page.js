@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { register } from "../../services/auth.service";
 
-export default function Register() {
+function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const ref = searchParams.get("ref") || "";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,6 +46,7 @@ export default function Register() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        referredBy: ref,
       });
       // Redirect to login page after successful registration
       router.push("/login");
@@ -114,9 +118,9 @@ export default function Register() {
               value={formData.confirmPassword}
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${formData.confirmPassword &&
-                  formData.password !== formData.confirmPassword
-                  ? "border-red-400 focus:border-red-500"
-                  : "focus:border-blue-500"
+                formData.password !== formData.confirmPassword
+                ? "border-red-400 focus:border-red-500"
+                : "focus:border-blue-500"
                 }`}
               placeholder="••••••••"
               required
@@ -145,5 +149,13 @@ export default function Register() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function Register() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterForm />
+    </Suspense>
   );
 }

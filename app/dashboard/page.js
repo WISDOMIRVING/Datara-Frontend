@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Card from "../../components/Card";
@@ -8,7 +8,7 @@ import TransactionHistory from "../../components/TransactionHistory";
 import AuthGuard from "../../components/AuthGuard";
 import { useAuth } from "../../context/AuthContext";
 import { initFundWallet, topUpWallet } from "../../services/wallet.service";
-import { buyData as buyDataAPI } from "../../services/vtu.service";
+import { buyData as buyDataAPI, buyAirtime as buyAirtimeAPI } from "../../services/vtu.service";
 
 function DashboardContent() {
   const router = useRouter();
@@ -24,6 +24,12 @@ function DashboardContent() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [buyLoading, setBuyLoading] = useState(false);
   const [buyMessage, setBuyMessage] = useState("");
+  const [showBuyAirtimeModal, setShowBuyAirtimeModal] = useState(false);
+  const [airtimeNetwork, setAirtimeNetwork] = useState("MTN");
+  const [airtimeAmount, setAirtimeAmount] = useState("");
+  const [airtimePhone, setAirtimePhone] = useState("");
+  const [airtimeLoading, setAirtimeLoading] = useState(false);
+  const [airtimeMessage, setAirtimeMessage] = useState("");
 
   const dataPlans = {
     MTN: [
@@ -108,6 +114,31 @@ function DashboardContent() {
     }
   };
 
+  const handleBuyAirtime = async (e) => {
+    e.preventDefault();
+    setAirtimeLoading(true);
+    setAirtimeMessage("");
+    try {
+      await buyAirtimeAPI({
+        phone: airtimePhone,
+        amount: Number(airtimeAmount),
+        network: airtimeNetwork
+      });
+      setAirtimeMessage("Airtime purchased successfully!");
+      await refreshWallet();
+      setTimeout(() => {
+        setShowBuyAirtimeModal(false);
+        setAirtimeMessage("");
+        setAirtimePhone("");
+        setAirtimeAmount("");
+      }, 2000);
+    } catch (err) {
+      setAirtimeMessage(err.response?.data?.message || "Purchase failed");
+    } finally {
+      setAirtimeLoading(false);
+    }
+  };
+
   const handleLogout = () => {
     logoutUser();
     router.push("/login");
@@ -115,9 +146,10 @@ function DashboardContent() {
 
   const quickActions = [
     { label: "Buy Data", icon: "📶", onClick: () => setShowBuyDataModal(true) },
-    { label: "Airtime", icon: "📱", href: "/vtu/airtime" },
+    { label: "Airtime", icon: "📱", onClick: () => setShowBuyAirtimeModal(true) },
     { label: "Cable TV", icon: "📺", href: "/vtu/cable" },
     { label: "Electricity", icon: "💡", href: "/vtu/electricity" },
+    { label: "Exam Pins", icon: "🎓", href: "/vtu/exam" },
   ];
 
   return (
@@ -135,9 +167,12 @@ function DashboardContent() {
           >
             Buy Data
           </button>
-          <Link href="/vtu/airtime" className="block w-full text-left py-2.5 px-4 rounded hover:bg-blue-800 transition">
+          <button
+            onClick={() => setShowBuyAirtimeModal(true)}
+            className="block w-full text-left py-2.5 px-4 rounded hover:bg-blue-800 transition"
+          >
             Buy Airtime
-          </Link>
+          </button>
           <Link href="/vtu/cable" className="block w-full text-left py-2.5 px-4 rounded hover:bg-blue-800 transition">
             Cable TV
           </Link>
@@ -179,6 +214,40 @@ function DashboardContent() {
             <p className="text-xs md:text-sm text-[var(--text-primary)] opacity-60 truncate">
               {user?.email || "Manage your account and services"}
             </p>
+          </div>
+        </div>
+
+        {/* Referral Section */}
+        <div className="mt-8 mb-10">
+          <div className="glass p-6 md:p-8 rounded-[2.5rem] shadow-xl border border-white/20 relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+            {/* Decorative circles */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-black text-white mb-2 italic tracking-tight">Refer & Earn ₦100</h3>
+                <p className="text-blue-100 text-sm max-w-sm">Share your referral link with friends and get rewarded instantly when they fund their wallet for the first time!</p>
+              </div>
+
+              <div className="w-full md:w-auto flex flex-col items-center gap-4">
+                <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 flex flex-col items-center min-w-[240px]">
+                  <span className="text-[10px] text-blue-200 font-bold uppercase tracking-[0.2em] mb-1">Your Referral Code</span>
+                  <span className="text-2xl font-black text-white tracking-widest uppercase">{user?.referralCode || "------"}</span>
+                </div>
+
+                <button
+                  onClick={() => {
+                    const link = `${window.location.origin}/register?ref=${user?.referralCode}`;
+                    navigator.clipboard.writeText(link);
+                    alert("Referral link copied to clipboard!");
+                  }}
+                  className="bg-white text-blue-900 px-8 py-3 rounded-xl font-black text-sm hover:bg-blue-50 transition-all shadow-lg active:scale-95"
+                >
+                  COPY REFERRAL LINK
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -358,6 +427,82 @@ function DashboardContent() {
             </div>
           </div>
         )}
+
+        {/* Buy Airtime Modal */}
+        {showBuyAirtimeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <div className="bg-white dark:bg-gray-800 w-full max-w-md p-5 md:p-8 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 relative">
+              <button
+                onClick={() => { setShowBuyAirtimeModal(false); setAirtimeMessage(""); }}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              >
+                ✕
+              </button>
+              <h2 className="text-2xl font-bold mb-6 text-[var(--text-primary)]">
+                Buy Airtime
+              </h2>
+              <form onSubmit={handleBuyAirtime}>
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      value={airtimePhone}
+                      onChange={(e) => setAirtimePhone(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-900 outline-none bg-transparent text-[var(--text-primary)]"
+                      placeholder="08012345678"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                      Network
+                    </label>
+                    <select
+                      value={airtimeNetwork}
+                      onChange={(e) => setAirtimeNetwork(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-900 outline-none bg-transparent text-[var(--text-primary)]"
+                    >
+                      {Object.keys(dataPlans).map((net) => (
+                        <option key={net} value={net}>
+                          {net}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                      Amount (₦)
+                    </label>
+                    <input
+                      type="number"
+                      min="50"
+                      value={airtimeAmount}
+                      onChange={(e) => setAirtimeAmount(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-900 outline-none bg-transparent text-[var(--text-primary)]"
+                      placeholder="e.g. 500"
+                      required
+                    />
+                  </div>
+                </div>
+                {airtimeMessage && (
+                  <p className={`mt-4 text-sm ${airtimeMessage.includes("success") ? "text-green-600" : "text-red-500"}`}>
+                    {airtimeMessage}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={airtimeLoading}
+                  className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition mt-8 disabled:opacity-50"
+                >
+                  {airtimeLoading ? "Processing..." : "Purchase Airtime"}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Mobile Bottom Navigation */}
@@ -383,12 +528,12 @@ function DashboardContent() {
             </div>
             <span className="text-[10px] font-medium text-blue-900 dark:text-blue-400">Fund</span>
           </button>
-          <Link href="/vtu/airtime" className="flex flex-col items-center gap-0.5 px-2 py-1 text-gray-600 dark:text-gray-400">
+          <button onClick={() => setShowBuyAirtimeModal(true)} className="flex flex-col items-center gap-0.5 px-2 py-1 text-gray-600 dark:text-gray-400">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <span className="text-[10px] font-medium">Airtime</span>
-          </Link>
+          </button>
           <Link href="/settings" className="flex flex-col items-center gap-0.5 px-2 py-1 text-gray-600 dark:text-gray-400">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -405,7 +550,9 @@ function DashboardContent() {
 export default function Dashboard() {
   return (
     <AuthGuard>
-      <DashboardContent />
+      <Suspense fallback={null}>
+        <DashboardContent />
+      </Suspense>
     </AuthGuard>
   );
 }

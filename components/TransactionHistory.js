@@ -1,49 +1,45 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import api from "../services/api";
+
 export default function TransactionHistory() {
-  const transactions = [
-    {
-      id: "TRX-9871",
-      service: "MTN 1GB Data",
-      amount: "₦300",
-      date: "Oct 24, 2023",
-      status: "Success",
-    },
-    {
-      id: "TRX-9872",
-      service: "Airtime Topup",
-      amount: "₦500",
-      date: "Oct 23, 2023",
-      status: "Success",
-    },
-    {
-      id: "TRX-9873",
-      service: "Gotv Jinja",
-      amount: "₦2,250",
-      date: "Oct 21, 2023",
-      status: "Pending",
-    },
-    {
-      id: "TRX-9874",
-      service: "Airtel 2GB",
-      amount: "₦600",
-      date: "Oct 20, 2023",
-      status: "Failed",
-    },
-    {
-      id: "TRX-9875",
-      service: "Electricity Bill",
-      amount: "₦5,000",
-      date: "Oct 18, 2023",
-      status: "Success",
-    },
-  ];
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.get("/wallet/transactions")
+      .then(res => {
+        setTransactions(res.data.data || []);
+      })
+      .catch(err => {
+        console.error("Failed to fetch transactions:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   const statusStyle = (status) => {
-    if (status === "Success")
+    if (status === "SUCCESS")
       return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
-    if (status === "Pending")
+    if (status === "PENDING")
       return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400";
     return "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
   };
+
+  if (loading) {
+    return (
+      <div className="glass rounded-xl sm:rounded-2xl p-6 shadow-sm animate-pulse">
+        <div className="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+        <div className="space-y-3">
+          {[1, 2, 3].map(i => (
+            <div key={i} className="h-16 bg-gray-100 dark:bg-gray-800 rounded"></div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm">
@@ -51,74 +47,81 @@ export default function TransactionHistory() {
         Recent Transactions
       </h3>
 
-      {/* Mobile: Card Layout */}
-      <div className="sm:hidden space-y-3">
-        {transactions.map((trx, idx) => (
-          <div
-            key={idx}
-            className="border border-gray-100 dark:border-gray-800 rounded-lg p-3"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-[var(--text-primary)]">
-                {trx.service}
-              </span>
-              <span
-                className={`px-2 py-0.5 rounded-full text-xs font-bold ${statusStyle(trx.status)}`}
+      {transactions.length === 0 ? (
+        <p className="text-sm text-[var(--text-primary)] opacity-50 py-8 text-center">
+          No transactions yet.
+        </p>
+      ) : (
+        <>
+          {/* Mobile: Card Layout */}
+          <div className="sm:hidden space-y-3">
+            {transactions.map((trx) => (
+              <div
+                key={trx._id}
+                className="border border-gray-100 dark:border-gray-800 rounded-lg p-3"
               >
-                {trx.status}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-base font-bold text-[var(--text-primary)]">
-                {trx.amount}
-              </span>
-              <span className="text-xs text-[var(--text-primary)] opacity-50">
-                {trx.date}
-              </span>
-            </div>
-            <p className="text-xs text-[var(--text-primary)] opacity-40 mt-1">
-              {trx.id}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {/* Desktop: Table Layout */}
-      <div className="hidden sm:block">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="text-[var(--text-primary)] opacity-70 border-b border-gray-200 dark:border-gray-700">
-              <th className="py-3 px-4 font-semibold text-sm">
-                Transaction ID
-              </th>
-              <th className="py-3 px-4 font-semibold text-sm">Service</th>
-              <th className="py-3 px-4 font-semibold text-sm">Amount</th>
-              <th className="py-3 px-4 font-semibold text-sm">Date</th>
-              <th className="py-3 px-4 font-semibold text-sm">Status</th>
-            </tr>
-          </thead>
-          <tbody className="text-[var(--text-primary)]">
-            {transactions.map((trx, idx) => (
-              <tr
-                key={idx}
-                className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition"
-              >
-                <td className="py-3 px-4 text-sm font-medium">{trx.id}</td>
-                <td className="py-3 px-4 text-sm">{trx.service}</td>
-                <td className="py-3 px-4 text-sm">{trx.amount}</td>
-                <td className="py-3 px-4 text-sm opacity-80">{trx.date}</td>
-                <td className="py-3 px-4 text-sm">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-semibold text-[var(--text-primary)]">
+                    {trx.serviceType}
+                  </span>
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-bold ${statusStyle(trx.status)}`}
+                    className={`px-2 py-0.5 rounded-full text-xs font-bold ${statusStyle(trx.status)}`}
                   >
                     {trx.status}
                   </span>
-                </td>
-              </tr>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-base font-bold text-[var(--text-primary)]">
+                    ₦{trx.amount.toLocaleString()}
+                  </span>
+                  <span className="text-xs text-[var(--text-primary)] opacity-50">
+                    {new Date(trx.createdAt).toLocaleDateString()}
+                  </span>
+                </div>
+                <p className="text-[10px] text-[var(--text-primary)] opacity-40 mt-1 uppercase">
+                  ID: {trx._id.slice(-8)}
+                </p>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          {/* Desktop: Table Layout */}
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="text-[var(--text-primary)] opacity-60 border-b border-gray-200 dark:border-gray-700">
+                  <th className="py-2.5 px-3 font-semibold">ID</th>
+                  <th className="py-2.5 px-3 font-semibold">Service</th>
+                  <th className="py-2.5 px-3 font-semibold">Amount</th>
+                  <th className="py-2.5 px-3 font-semibold">Date</th>
+                  <th className="py-2.5 px-3 font-semibold">Status</th>
+                </tr>
+              </thead>
+              <tbody className="text-[var(--text-primary)]">
+                {transactions.map((trx) => (
+                  <tr
+                    key={trx._id}
+                    className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition"
+                  >
+                    <td className="py-2 px-3 font-medium uppercase whitespace-nowrap">{trx._id.slice(-8)}</td>
+                    <td className="py-2 px-3 whitespace-nowrap">{trx.serviceType}</td>
+                    <td className="py-2 px-3 font-bold whitespace-nowrap">₦{trx.amount.toLocaleString()}</td>
+                    <td className="py-2 px-3 opacity-80 whitespace-nowrap">{new Date(trx.createdAt).toLocaleDateString()}</td>
+                    <td className="py-2 px-3">
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${statusStyle(trx.status)}`}
+                      >
+                        {trx.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 }
+
