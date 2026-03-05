@@ -127,9 +127,9 @@ export default function About() {
             </section>
 
             {/* ═══ Stats Strip ═══ */}
-            <section className="bg-white border-b border-gray-100 relative -mt-8 z-20">
+            <section className="bg-primary border-b border-primary relative -mt-8 z-20">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 sm:p-8">
+                    <div className="bg-primary rounded-2xl shadow-xl shadow-gray-200/50 border border-primary p-6 sm:p-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                             {[
                                 { value: "10K+", label: "Happy Users", emoji: "👥" },
@@ -139,8 +139,8 @@ export default function About() {
                             ].map((stat, i) => (
                                 <div key={i} className="text-center">
                                     <span className="text-2xl mb-2 block">{stat.emoji}</span>
-                                    <p className="text-2xl sm:text-3xl font-black text-blue-900 tracking-tight">{stat.value}</p>
-                                    <p className="text-[11px] sm:text-xs text-gray-400 font-medium mt-1">{stat.label}</p>
+                                    <p className="text-2xl sm:text-3xl font-black text-blue-900 dark:text-blue-300 tracking-tight">{stat.value}</p>
+                                    <p className="text-[11px] sm:text-xs text-muted font-medium mt-1">{stat.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -149,12 +149,12 @@ export default function About() {
             </section>
 
             {/* ═══ Our Story / Mission ═══ */}
-            <section id="story" className="py-20 sm:py-28 bg-gray-50">
+            <section id="story" className="py-20 sm:py-28 bg-secondary">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         {/* Image Side */}
                         <div className="relative order-2 lg:order-1">
-                            <div className="absolute -inset-4 bg-gradient-to-br from-blue-100 to-cyan-50 rounded-3xl" />
+                            <div className="absolute -inset-4 bg-gradient-to-br from-blue-100/50 to-cyan-50/50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl" />
                             <Image
                                 src="/images/about-mission.png"
                                 alt="Digital connectivity through mobile payments"
@@ -163,28 +163,28 @@ export default function About() {
                                 className="relative rounded-2xl shadow-xl"
                             />
                             {/* Floating stat card */}
-                            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5 border border-gray-100">
-                                <p className="text-3xl font-black text-blue-900">40%</p>
-                                <p className="text-xs text-gray-500 font-medium">Cheaper than<br />network prices</p>
+                            <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-primary rounded-2xl shadow-xl p-4 sm:p-5 border border-primary">
+                                <p className="text-3xl font-black text-blue-900 dark:text-blue-300">40%</p>
+                                <p className="text-xs text-secondary font-medium uppercase tracking-wider">Cheaper than<br />network prices</p>
                             </div>
                         </div>
 
                         {/* Content Side */}
                         <div className="order-1 lg:order-2">
-                            <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Our Story</p>
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
+                            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Our Story</p>
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-6 tracking-tight leading-tight">
                                 Born from a Simple{" "}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                                     Idea
                                 </span>
                             </h2>
-                            <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-6">
+                            <p className="text-secondary text-base sm:text-lg leading-relaxed mb-6">
                                 Datara was founded with a clear mission: to make digital connectivity accessible and
                                 affordable for every Nigerian. We noticed that millions of people were overpaying for
                                 data, airtime, and bill payments — and the existing platforms were slow, unreliable,
                                 or overpriced.
                             </p>
-                            <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8">
+                            <p className="text-secondary text-base sm:text-lg leading-relaxed mb-8">
                                 So we built something better. A platform that is fast, secure, and offers the best
                                 rates in the market. Today, Datara serves thousands of users who trust us for their
                                 daily digital needs — from students checking exam results to businesses managing bulk
@@ -198,9 +198,9 @@ export default function About() {
                                     { label: "Team Size", value: "Growing" },
                                     { label: "Services", value: "5+" },
                                 ].map((item, i) => (
-                                    <div key={i} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-                                        <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">{item.label}</p>
-                                        <p className="text-lg font-black text-blue-900">{item.value}</p>
+                                    <div key={i} className="bg-primary rounded-xl p-4 border border-primary shadow-sm">
+                                        <p className="text-xs text-muted font-bold uppercase tracking-widest mb-1">{item.label}</p>
+                                        <p className="text-lg font-black text-blue-900 dark:text-blue-300">{item.value}</p>
                                     </div>
                                 ))}
                             </div>

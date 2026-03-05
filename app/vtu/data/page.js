@@ -6,7 +6,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { buyData } from "../../../services/vtu.service";
 
 function DataContent() {
-  const { refreshWallet } = useAuth();
+  const { refreshWallet, walletBalance } = useAuth();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -35,36 +35,85 @@ function DataContent() {
   };
 
   return (
-    <div className="max-w-lg mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-8">Buy Data</h1>
-      <form onSubmit={submit} className="glass p-8 rounded-2xl shadow-md space-y-6">
-        {message && <div className="bg-green-100 text-green-700 px-4 py-3 rounded">{message}</div>}
-        {error && <div className="bg-red-100 text-red-700 px-4 py-3 rounded">{error}</div>}
+    <div className="p-4 sm:p-8 max-w-2xl mx-auto space-y-8 pb-12">
+      <header>
+        <h1 className="text-4xl sm:text-6xl font-black text-primary tracking-tighter italic">
+          Data <span className="text-blue-600">Bundles</span>
+        </h1>
+        <p className="text-secondary font-medium text-sm mt-1 opacity-70">High-speed internet access instantly</p>
+      </header>
 
-        <div>
-          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Network</label>
-          <select name="network" className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" required>
-            <option value="MTN">MTN</option>
-            <option value="GLO">GLO</option>
-            <option value="AIRTEL">AIRTEL</option>
-            <option value="9MOBILE">9MOBILE</option>
-          </select>
-        </div>
+      <div className="grid grid-cols-1 gap-8">
+        <form onSubmit={submit} className="glass p-6 sm:p-10 rounded-[2.5rem] border border-primary shadow-2xl space-y-8 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <span className="text-8xl">📶</span>
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Phone Number</label>
-          <input name="phone" placeholder="08012345678" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
-        </div>
+          {message && (
+            <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-6 py-4 rounded-2xl font-bold text-sm animate-bounce" role="alert">
+              {message}
+            </div>
+          )}
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-6 py-4 rounded-2xl font-bold text-sm" role="alert">
+              {error}
+            </div>
+          )}
 
-        <div>
-          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">Amount (₦)</label>
-          <input name="amount" type="number" min="1" placeholder="e.g. 300" required className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none bg-transparent text-[var(--text-primary)]" />
-        </div>
+          <div className="space-y-6 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-xs font-black text-secondary mb-3 uppercase tracking-widest ml-1">Network</label>
+                <select
+                  name="network"
+                  className="w-full px-6 py-4 rounded-2xl border border-primary bg-secondary/50 text-primary text-lg font-bold outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none cursor-pointer"
+                  required
+                >
+                  <option value="MTN" className="bg-primary">MTN</option>
+                  <option value="GLO" className="bg-primary">GLO</option>
+                  <option value="AIRTEL" className="bg-primary">AIRTEL</option>
+                  <option value="9MOBILE" className="bg-primary">9MOBILE</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-black text-secondary mb-3 uppercase tracking-widest ml-1">Phone Identity</label>
+                <input
+                  name="phone"
+                  placeholder="08012345678"
+                  required
+                  className="w-full px-6 py-4 rounded-2xl border border-primary bg-secondary/50 text-primary text-lg font-bold outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:opacity-30"
+                />
+              </div>
+            </div>
 
-        <button type="submit" disabled={loading} className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition disabled:opacity-50">
-          {loading ? "Processing..." : "Buy Data"}
-        </button>
-      </form>
+            <div>
+              <label className="block text-xs font-black text-secondary mb-3 uppercase tracking-widest ml-1">Plan Amount (₦)</label>
+              <input
+                name="amount"
+                type="number"
+                min="1"
+                placeholder="Enter plan cost"
+                required
+                className="w-full px-6 py-4 rounded-2xl border border-primary bg-secondary/50 text-primary text-lg font-bold outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:opacity-30"
+              />
+              <div className="flex justify-between items-center mt-2 px-1">
+                <p className="text-[10px] text-secondary font-medium uppercase tracking-wider opacity-60">Verified Bundles Only</p>
+                <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wider">Balance: ₦{walletBalance?.toLocaleString()}</p>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50 relative z-10"
+          >
+            {loading ? "PROCESSING..." : "ACTIVATE DATA"}
+          </button>
+
+          <p className="text-center text-[10px] text-secondary font-bold uppercase tracking-widest opacity-40">System-wide data propagation enabled</p>
+        </form>
+      </div>
     </div>
   );
 }

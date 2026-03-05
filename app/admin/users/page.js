@@ -35,49 +35,51 @@ export default function AdminUsers() {
   }
 
   return (
-    <div className="p-4 sm:p-8 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-[var(--text-primary)]">User Management</h1>
+    <div className="p-4 sm:p-8 max-w-5xl mx-auto bg-primary min-h-screen">
+      <h1 className="text-4xl font-black mb-8 text-primary tracking-tighter italic">
+        User <span className="text-blue-600">Management</span>
+      </h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {users.length === 0 ? (
-          <p className="col-span-full text-center py-12 text-gray-500">No users found.</p>
+          <p className="col-span-full text-center py-12 text-secondary opacity-50">No users found.</p>
         ) : (
           users.map((u) => (
-            <Card key={u._id} className="relative overflow-hidden">
+            <Card key={u._id} className="relative overflow-hidden bg-secondary/50 border-primary group hover:border-blue-500/30 transition-all">
               {u.isLocked && (
-                <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-tighter">
+                <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-tighter z-10">
                   Locked
                 </div>
               )}
               <div className="flex items-start gap-4 mb-6">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-inner ${u.isLocked ? "bg-gray-400" : "bg-blue-900"}`}>
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg ring-4 ring-primary ${u.isLocked ? "bg-gray-500" : "bg-gradient-to-br from-blue-600 to-blue-900"}`}>
                   {u.name[0].toUpperCase()}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="font-bold text-lg text-[var(--text-primary)] truncate">{u.name}</p>
-                  <p className="text-xs text-gray-500 truncate mb-2">{u.email}</p>
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${u.role === "ADMIN" ? "bg-purple-100 text-purple-700 font-black" : "bg-blue-50 text-blue-700"}`}>
+                  <p className="font-black text-lg text-primary truncate leading-tight">{u.name}</p>
+                  <p className="text-xs text-secondary truncate mb-2">{u.email}</p>
+                  <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider ${u.role === "ADMIN" ? "bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20" : "bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20"}`}>
                     {u.role}
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div className="space-y-4 pt-4 border-t border-primary">
                 <div className="flex justify-between items-end">
                   <div>
-                    <p className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Wallet Balance</p>
-                    <p className="text-2xl font-black text-blue-900 dark:text-blue-400 tracking-tight">
+                    <p className="text-[10px] text-secondary uppercase font-black tracking-widest mb-1 opacity-50">Wallet Balance</p>
+                    <p className="text-2xl font-black text-primary tracking-tighter">
                       ₦{(u.balance || 0).toLocaleString()}
                     </p>
                   </div>
                   <button
                     onClick={() => handleToggleLock(u._id)}
-                    className={`px-4 py-2 rounded-xl text-xs font-black transition-all active:scale-95 shadow-sm border ${u.isLocked
-                        ? "bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100"
-                        : "bg-red-50 text-red-600 border-red-100 hover:bg-red-100"
+                    className={`px-4 py-2.5 rounded-xl text-[10px] font-black transition-all active:scale-95 shadow-lg border ${u.isLocked
+                      ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20 hover:bg-emerald-500/20"
+                      : "bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500/20"
                       }`}
                   >
-                    {u.isLocked ? "UNLOCK ACCOUNT" : "LOCK ACCOUNT"}
+                    {u.isLocked ? "UNLOCK" : "LOCK"}
                   </button>
                 </div>
               </div>

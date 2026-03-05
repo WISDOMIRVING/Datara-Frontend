@@ -94,165 +94,173 @@ export default function ForgotPassword() {
     ];
 
     return (
-        <div className="min-h-[80vh] flex items-center justify-center px-4">
-            <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-6 sm:p-8">
-                {/* Progress indicator */}
-                <div className="flex items-center justify-center gap-2 mb-6">
-                    {[1, 2, 3].map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                            <div
-                                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors ${step >= s
-                                        ? "bg-blue-600 text-white"
-                                        : "bg-gray-200 text-gray-500"
-                                    }`}
-                            >
-                                {step > s ? "✓" : s}
-                            </div>
-                            {s < 3 && (
+        <div className="min-h-[90vh] flex items-center justify-center px-4 py-16 bg-primary transition-colors duration-500 relative overflow-hidden">
+            {/* Background Decorative Element */}
+            <div className="absolute top-1/4 -right-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div className="max-w-md w-full relative z-10">
+                <header className="text-center mb-10">
+                    <h1 className="text-4xl sm:text-5xl font-black text-primary tracking-tighter italic mb-2">
+                        Security <span className="text-blue-600">Recovery</span>
+                    </h1>
+                    <p className="text-secondary font-medium text-sm opacity-60 uppercase tracking-widest leading-relaxed px-4">{stepDescriptions[step]}</p>
+                </header>
+
+                <div className="glass p-8 sm:p-10 rounded-[2.5rem] border border-primary shadow-2xl relative overflow-hidden backdrop-blur-xl">
+                    {/* Progress indicator */}
+                    <div className="flex items-center justify-center gap-4 mb-10">
+                        {[1, 2, 3].map((s) => (
+                            <div key={s} className="flex items-center gap-4">
                                 <div
-                                    className={`w-8 h-0.5 ${step > s ? "bg-blue-600" : "bg-gray-200"
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-black transition-all duration-500 ${step >= s
+                                        ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-110"
+                                        : "bg-secondary/30 text-secondary border border-primary"
                                         }`}
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div>
-
-                <h2 className="text-xl sm:text-2xl font-bold text-center mb-2 text-gray-800">
-                    {stepTitles[step]}
-                </h2>
-                <p className="text-sm text-gray-500 text-center mb-6">
-                    {stepDescriptions[step]}
-                </p>
-
-                {/* Step 1: Enter Email */}
-                {step === 1 && (
-                    <form onSubmit={handleSendOtp} className="space-y-4">
-                        <div>
-                            <label className="block text-gray-700 mb-2">Email Address</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="you@example.com"
-                                required
-                                className="w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
-                        >
-                            {loading ? "Sending..." : "Send OTP Code"}
-                        </button>
-                    </form>
-                )}
-
-                {/* Step 2: Enter OTP */}
-                {step === 2 && (
-                    <form onSubmit={handleVerifyOtp} className="space-y-4">
-                        <div>
-                            <label className="block text-gray-700 mb-2">
-                                Verification Code
-                            </label>
-                            <input
-                                type="text"
-                                value={otp}
-                                onChange={(e) =>
-                                    setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))
-                                }
-                                placeholder="Enter 6-digit code"
-                                required
-                                maxLength={6}
-                                className="w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:border-blue-500 text-center text-xl tracking-widest font-mono text-gray-900"
-                            />
-                            <p className="text-xs text-gray-400 mt-2">
-                                Sent to {email}.{" "}
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setStep(1);
-                                        setOtp("");
-                                        setError("");
-                                        setMessage("");
-                                    }}
-                                    className="text-blue-600 hover:underline"
                                 >
-                                    Change email
-                                </button>
-                            </p>
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={loading || otp.length !== 6}
-                            className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
-                        >
-                            {loading ? "Verifying..." : "Verify Code"}
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleSendOtp}
-                            disabled={loading}
-                            className="w-full text-blue-600 text-sm hover:underline disabled:opacity-50"
-                        >
-                            Resend Code
-                        </button>
-                    </form>
-                )}
+                                    {step > s ? "✓" : s}
+                                </div>
+                                {s < 3 && (
+                                    <div
+                                        className={`w-8 h-1 rounded-full transition-all duration-700 ${step > s ? "bg-blue-600" : "bg-secondary/20"
+                                            }`}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </div>
 
-                {/* Step 3: New Password */}
-                {step === 3 && (
-                    <form onSubmit={handleResetPassword} className="space-y-4">
-                        <div>
-                            <label className="block text-gray-700 mb-2">New Password</label>
-                            <input
-                                type="password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                                placeholder="••••••••"
-                                required
-                                minLength={6}
-                                className="w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-gray-700 mb-2">
-                                Confirm New Password
-                            </label>
-                            <input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                placeholder="••••••••"
-                                required
-                                minLength={6}
-                                className="w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
-                        >
-                            {loading ? "Resetting..." : "Reset Password"}
-                        </button>
-                    </form>
-                )}
+                    {/* Step 1: Enter Email */}
+                    {step === 1 && (
+                        <form onSubmit={handleSendOtp} className="space-y-6">
+                            <div>
+                                <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Registry Email</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="name@example.com"
+                                    required
+                                    className="w-full px-6 py-4 bg-secondary/30 border border-primary text-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold placeholder:opacity-20 text-sm"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50"
+                            >
+                                {loading ? "DISPATCHING..." : "SEND SECURITY CODE"}
+                            </button>
+                        </form>
+                    )}
 
-                {/* Messages */}
-                {error && (
-                    <p className="mt-4 text-center text-sm text-red-500">{error}</p>
-                )}
-                {message && (
-                    <p className="mt-4 text-center text-sm text-green-600">{message}</p>
-                )}
+                    {/* Step 2: Enter OTP */}
+                    {step === 2 && (
+                        <form onSubmit={handleVerifyOtp} className="space-y-6">
+                            <div>
+                                <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">6-Digit Access Code</label>
+                                <input
+                                    type="text"
+                                    value={otp}
+                                    onChange={(e) =>
+                                        setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))
+                                    }
+                                    placeholder="000000"
+                                    required
+                                    maxLength={6}
+                                    className="w-full px-6 py-5 bg-secondary/30 border border-primary text-center text-3xl tracking-[0.3em] font-black text-blue-500 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:opacity-10"
+                                />
+                                <div className="mt-4 text-center">
+                                    <p className="text-[10px] text-secondary font-bold opacity-60 uppercase tracking-wider">
+                                        SENT TO: <span className="text-primary">{email}</span>
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setStep(1);
+                                            setOtp("");
+                                            setError("");
+                                            setMessage("");
+                                        }}
+                                        className="text-[10px] font-black text-blue-500 hover:underline uppercase tracking-widest mt-2"
+                                    >
+                                        Correction Identity?
+                                    </button>
+                                </div>
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading || otp.length !== 6}
+                                className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50"
+                            >
+                                {loading ? "VALIDATING..." : "VERIFY CODE"}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleSendOtp}
+                                disabled={loading}
+                                className="w-full text-secondary text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all underline underline-offset-4 opacity-50 hover:opacity-100"
+                            >
+                                Dispatch New Code
+                            </button>
+                        </form>
+                    )}
 
-                <p className="mt-6 text-center text-gray-500 text-sm">
-                    <Link href="/login" className="text-blue-600 hover:underline">
-                        ← Back to Login
-                    </Link>
-                </p>
+                    {/* Step 3: New Password */}
+                    {step === 3 && (
+                        <form onSubmit={handleResetPassword} className="space-y-6">
+                            <div>
+                                <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">New Secret Key</label>
+                                <input
+                                    type="password"
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    placeholder="••••••••"
+                                    required
+                                    minLength={6}
+                                    className="w-full px-6 py-4 bg-secondary/30 border border-primary text-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold placeholder:opacity-20 text-sm"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Confirm New Key</label>
+                                <input
+                                    type="password"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    placeholder="••••••••"
+                                    required
+                                    minLength={6}
+                                    className="w-full px-6 py-4 bg-secondary/30 border border-primary text-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold placeholder:opacity-20 text-sm"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50"
+                            >
+                                {loading ? "UPDATING..." : "RE-ESTABLISH ACCESS"}
+                            </button>
+                        </form>
+                    )}
+
+                    {/* Messages */}
+                    {error && (
+                        <div className="mt-8 p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-center text-xs font-black uppercase tracking-tighter">
+                            {error}
+                        </div>
+                    )}
+                    {message && !error && (
+                        <div className="mt-8 p-4 bg-green-500/10 border border-green-500/20 text-green-500 rounded-xl text-center text-xs font-black uppercase tracking-tighter">
+                            {message}
+                        </div>
+                    )}
+
+                    <div className="mt-8 pt-8 border-t border-primary text-center">
+                        <Link href="/login" className="text-secondary text-xs font-black uppercase tracking-widest hover:text-blue-500 transition-all flex items-center justify-center gap-2 opacity-60 hover:opacity-100">
+                            <span>←</span> RETURN TO GATEWAY
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     );

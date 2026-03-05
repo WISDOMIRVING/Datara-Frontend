@@ -42,13 +42,13 @@ export default function TransactionHistory() {
   }
 
   return (
-    <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm">
-      <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-3 sm:mb-4">
+    <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-primary">
+      <h3 className="text-lg sm:text-xl font-bold text-primary mb-3 sm:mb-4">
         Recent Transactions
       </h3>
 
       {transactions.length === 0 ? (
-        <p className="text-sm text-[var(--text-primary)] opacity-50 py-8 text-center">
+        <p className="text-sm text-secondary opacity-50 py-8 text-center">
           No transactions yet.
         </p>
       ) : (
@@ -58,10 +58,10 @@ export default function TransactionHistory() {
             {transactions.map((trx) => (
               <div
                 key={trx._id}
-                className="border border-gray-100 dark:border-gray-800 rounded-lg p-3"
+                className="border border-primary rounded-lg p-3 bg-secondary/30"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-[var(--text-primary)]">
+                  <span className="text-sm font-semibold text-primary">
                     {trx.serviceType}
                   </span>
                   <span
@@ -71,14 +71,14 @@ export default function TransactionHistory() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-bold text-[var(--text-primary)]">
+                  <span className="text-base font-bold text-primary">
                     ₦{trx.amount.toLocaleString()}
                   </span>
-                  <span className="text-xs text-[var(--text-primary)] opacity-50">
+                  <span className="text-xs text-secondary opacity-50">
                     {new Date(trx.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <p className="text-[10px] text-[var(--text-primary)] opacity-40 mt-1 uppercase">
+                <p className="text-[10px] text-secondary opacity-40 mt-1 uppercase">
                   ID: {trx._id.slice(-8)}
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function TransactionHistory() {
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="text-[var(--text-primary)] opacity-60 border-b border-gray-200 dark:border-gray-700">
+                <tr className="text-secondary opacity-70 border-b border-primary">
                   <th className="py-2.5 px-3 font-semibold">ID</th>
                   <th className="py-2.5 px-3 font-semibold">Service</th>
                   <th className="py-2.5 px-3 font-semibold">Amount</th>
@@ -97,11 +97,11 @@ export default function TransactionHistory() {
                   <th className="py-2.5 px-3 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody className="text-[var(--text-primary)]">
+              <tbody className="text-primary">
                 {transactions.map((trx) => (
                   <tr
                     key={trx._id}
-                    className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition"
+                    className="border-b border-primary hover:bg-secondary transition-colors"
                   >
                     <td className="py-2 px-3 font-medium uppercase whitespace-nowrap">{trx._id.slice(-8)}</td>
                     <td className="py-2 px-3 whitespace-nowrap">{trx.serviceType}</td>

@@ -6,7 +6,7 @@ import { useAuth } from "../../../context/AuthContext";
 import api from "../../../services/api";
 
 function ExamContent() {
-    const { refreshWallet } = useAuth();
+    const { refreshWallet, walletBalance } = useAuth();
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -42,37 +42,68 @@ function ExamContent() {
     };
 
     return (
-        <div className="max-w-lg mx-auto py-12 px-4">
-            <h1 className="text-3xl font-black text-[var(--text-primary)] mb-8 tracking-tighter">
-                Exam <span className="text-blue-900">Pin</span> Checker
-            </h1>
-            <form onSubmit={submit} className="glass p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 space-y-6">
-                {message && <div className="bg-green-50 text-green-700 px-4 py-3 rounded-xl text-sm font-medium border border-green-100">{message}</div>}
-                {error && <div className="bg-red-50 text-red-700 px-4 py-3 rounded-xl text-sm font-medium border border-red-100">{error}</div>}
+        <div className="p-4 sm:p-8 max-w-2xl mx-auto space-y-8 pb-12">
+            <header>
+                <h1 className="text-4xl sm:text-6xl font-black text-primary tracking-tighter italic">
+                    Exam <span className="text-blue-600">PINs</span>
+                </h1>
+                <p className="text-secondary font-medium text-sm mt-1 opacity-70">Instant result checker generation</p>
+            </header>
 
-                <div>
-                    <label className="block text-sm font-bold text-[var(--text-primary)] mb-2 uppercase tracking-wide opacity-70">Select Exam Type</label>
-                    <select
-                        name="examType"
-                        className="w-full px-4 py-4 border border-gray-200 dark:border-gray-700 rounded-2xl outline-none bg-white dark:bg-gray-900 text-[var(--text-primary)] font-medium shadow-sm focus:ring-2 focus:ring-blue-900 transition-all"
-                        required
+            <div className="grid grid-cols-1 gap-8">
+                <form onSubmit={submit} className="glass p-6 sm:p-10 rounded-[2.5rem] border border-primary shadow-2xl space-y-8 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span className="text-8xl">🎓</span>
+                    </div>
+
+                    {message && (
+                        <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-6 py-4 rounded-2xl font-bold text-sm animate-bounce" role="alert">
+                            {message}
+                        </div>
+                    )}
+                    {error && (
+                        <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-6 py-4 rounded-2xl font-bold text-sm" role="alert">
+                            {error}
+                        </div>
+                    )}
+
+                    <div className="space-y-6 relative z-10">
+                        <div>
+                            <label className="block text-xs font-black text-secondary mb-3 uppercase tracking-widest ml-1">Select Exam Body</label>
+                            <select
+                                name="examType"
+                                className="w-full px-6 py-4 rounded-2xl border border-primary bg-secondary/50 text-primary text-lg font-bold outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none cursor-pointer"
+                                required
+                            >
+                                {examTypes.map(t => (
+                                    <option key={t.id} value={t.id} className="bg-primary">{t.name} — ₦{t.price.toLocaleString()}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="bg-blue-500/5 p-6 rounded-2xl border border-blue-500/10">
+                            <p className="text-xs text-blue-500 font-bold leading-relaxed mb-1">
+                                <span className="p-1 bg-blue-500 text-white rounded text-[8px] mr-2">NOTICE</span>
+                                PIN and Serial Number are delivered via transaction history.
+                            </p>
+                            <div className="flex justify-between items-center mt-4">
+                                <p className="text-[10px] text-secondary font-bold uppercase tracking-widest opacity-40 italic">Instant Delivery</p>
+                                <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wider">Balance: ₦{walletBalance?.toLocaleString()}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50 relative z-10"
                     >
-                        {examTypes.map(t => (
-                            <option key={t.id} value={t.id}>{t.name} — ₦{t.price.toLocaleString()}</option>
-                        ))}
-                    </select>
-                </div>
+                        {loading ? "GENERATING PIN..." : "PURCHASE PIN NOW"}
+                    </button>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-2xl border border-blue-100 dark:border-blue-800">
-                    <p className="text-xs text-blue-800 dark:text-blue-300 font-medium">
-                        Note: Your purchased PIN and Serial Number will be displayed in your <strong>Transaction History</strong> immediately after a successful payment.
-                    </p>
-                </div>
-
-                <button type="submit" disabled={loading} className="w-full bg-blue-900 text-white py-4 rounded-2xl font-black hover:bg-blue-800 transition-all shadow-lg shadow-blue-100 dark:shadow-none active:scale-[0.98] disabled:opacity-50">
-                    {loading ? "GENERATING PIN..." : "PURCHASE PIN NOW"}
-                </button>
-            </form>
+                    <p className="text-center text-[10px] text-secondary font-bold uppercase tracking-widest opacity-40 italic">Official examination board gateway</p>
+                </form>
+            </div>
         </div>
     );
 }

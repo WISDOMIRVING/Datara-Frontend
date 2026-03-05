@@ -87,7 +87,7 @@ export default function Contact() {
                                 ),
                                 title: "Email Us",
                                 detail: "support@datara.ng",
-                                color: "text-blue-600 bg-blue-50",
+                                color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20",
                             },
                             {
                                 icon: (
@@ -97,7 +97,7 @@ export default function Contact() {
                                 ),
                                 title: "Call Us",
                                 detail: "+234 800 DATARA",
-                                color: "text-emerald-600 bg-emerald-50",
+                                color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20",
                             },
                             {
                                 icon: (
@@ -107,7 +107,7 @@ export default function Contact() {
                                 ),
                                 title: "Live Chat",
                                 detail: "Available 24/7",
-                                color: "text-purple-600 bg-purple-50",
+                                color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20",
                             },
                             {
                                 icon: (
@@ -118,19 +118,19 @@ export default function Contact() {
                                 ),
                                 title: "Visit Us",
                                 detail: "Lagos, Nigeria",
-                                color: "text-amber-600 bg-amber-50",
+                                color: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20",
                             },
                         ].map((card, i) => (
                             <div
                                 key={i}
-                                className="bg-white rounded-2xl shadow-lg shadow-gray-200/50 border border-gray-100 p-5 sm:p-6 flex items-center gap-4 hover:shadow-xl transition-shadow group"
+                                className="bg-primary rounded-2xl shadow-lg shadow-gray-200/50 border border-primary p-5 sm:p-6 flex items-center gap-4 hover:shadow-xl transition-shadow group"
                             >
                                 <div className={`w-12 h-12 rounded-xl ${card.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                                     {card.icon}
                                 </div>
                                 <div>
-                                    <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{card.title}</p>
-                                    <p className="text-sm sm:text-base font-bold text-gray-900">{card.detail}</p>
+                                    <p className="text-xs text-muted font-medium uppercase tracking-wider">{card.title}</p>
+                                    <p className="text-sm sm:text-base font-bold text-primary">{card.detail}</p>
                                 </div>
                             </div>
                         ))}
@@ -139,15 +139,15 @@ export default function Contact() {
             </section>
 
             {/* ═══ Contact Form + Support Info ═══ */}
-            <section className="py-20 sm:py-28 bg-gray-50">
+            <section className="py-20 sm:py-28 bg-secondary">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
                         {/* Form — 3 columns */}
                         <div className="lg:col-span-3">
-                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 sm:p-10">
+                            <div className="bg-primary rounded-2xl shadow-sm border border-primary p-8 sm:p-10">
                                 <div className="mb-8">
-                                    <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-2">Send a Message</p>
-                                    <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+                                    <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Send a Message</p>
+                                    <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">
                                         We&apos;d Love to Hear From You
                                     </h2>
                                 </div>
@@ -164,35 +164,35 @@ export default function Contact() {
                                 <form onSubmit={handleSubmit} className="space-y-5">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name</label>
+                                            <label className="block text-sm font-semibold text-secondary mb-1.5">Full Name</label>
                                             <input
                                                 type="text"
                                                 required
                                                 value={formData.name}
                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all text-gray-900 placeholder-gray-400"
+                                                className="w-full px-4 py-3 bg-secondary border border-primary rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-primary outline-none transition-all text-primary placeholder-muted"
                                                 placeholder="Your full name"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
+                                            <label className="block text-sm font-semibold text-secondary mb-1.5">Email Address</label>
                                             <input
                                                 type="email"
                                                 required
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all text-gray-900 placeholder-gray-400"
+                                                className="w-full px-4 py-3 bg-secondary border border-primary rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-primary outline-none transition-all text-primary placeholder-muted"
                                                 placeholder="you@example.com"
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Subject</label>
+                                        <label className="block text-sm font-semibold text-secondary mb-1.5">Subject</label>
                                         <select
                                             value={formData.subject}
                                             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all text-gray-900"
+                                            className="w-full px-4 py-3 bg-secondary border border-primary rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-primary outline-none transition-all text-primary"
                                         >
                                             <option value="">Select a topic</option>
                                             <option value="general">General Inquiry</option>
@@ -204,13 +204,13 @@ export default function Contact() {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
+                                        <label className="block text-sm font-semibold text-secondary mb-1.5">Message</label>
                                         <textarea
                                             rows="5"
                                             required
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white outline-none transition-all text-gray-900 placeholder-gray-400 resize-none"
+                                            className="w-full px-4 py-3 bg-secondary border border-primary rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-primary outline-none transition-all text-primary placeholder-muted resize-none"
                                             placeholder="Tell us how we can help..."
                                         />
                                     </div>
@@ -231,8 +231,8 @@ export default function Contact() {
                         {/* Support Info — 2 columns */}
                         <div className="lg:col-span-2 space-y-6">
                             {/* Support Hours */}
-                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-                                <h3 className="text-lg font-extrabold text-gray-900 mb-5 flex items-center gap-2">
+                            <div className="bg-primary rounded-2xl shadow-sm border border-primary p-6 sm:p-8">
+                                <h3 className="text-lg font-extrabold text-primary mb-5 flex items-center gap-2">
                                     <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -245,23 +245,23 @@ export default function Contact() {
                                         { day: "Sunday", time: "24 Hours", active: true },
                                         { day: "Public Holidays", time: "Available", active: true },
                                     ].map((slot, i) => (
-                                        <div key={i} className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
-                                            <span className="text-sm text-gray-600">{slot.day}</span>
-                                            <span className={`text-sm font-bold ${slot.active ? "text-emerald-600" : "text-gray-400"}`}>
+                                        <div key={i} className="flex items-center justify-between py-2 border-b border-primary last:border-0">
+                                            <span className="text-sm text-secondary">{slot.day}</span>
+                                            <span className={`text-sm font-bold ${slot.active ? "text-emerald-600 dark:text-emerald-400" : "text-muted"}`}>
                                                 {slot.time}
                                             </span>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2">
+                                <div className="mt-5 pt-4 border-t border-primary flex items-center gap-2">
                                     <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-                                    <span className="text-sm font-semibold text-green-700">Currently Online</span>
+                                    <span className="text-sm font-semibold text-green-700 dark:text-green-500">Currently Online</span>
                                 </div>
                             </div>
 
                             {/* Social Media */}
-                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-                                <h3 className="text-lg font-extrabold text-gray-900 mb-5 flex items-center gap-2">
+                            <div className="bg-primary rounded-2xl shadow-sm border border-primary p-6 sm:p-8">
+                                <h3 className="text-lg font-extrabold text-primary mb-5 flex items-center gap-2">
                                     <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
                                     </svg>
@@ -269,20 +269,20 @@ export default function Contact() {
                                 </h3>
                                 <div className="space-y-3">
                                     {[
-                                        { name: "WhatsApp", handle: "+234 800 DATARA", color: "text-green-600 bg-green-50" },
-                                        { name: "Twitter/X", handle: "@datara_ng", color: "text-gray-900 bg-gray-100" },
-                                        { name: "Instagram", handle: "@datara.ng", color: "text-pink-600 bg-pink-50" },
-                                        { name: "Facebook", handle: "Datara Nigeria", color: "text-blue-600 bg-blue-50" },
+                                        { name: "WhatsApp", handle: "+234 800 DATARA", color: "text-green-600 bg-green-50 dark:bg-green-900/20" },
+                                        { name: "Twitter/X", handle: "@datara_ng", color: "text-primary bg-secondary" },
+                                        { name: "Instagram", handle: "@datara.ng", color: "text-pink-600 bg-pink-50 dark:bg-pink-900/20" },
+                                        { name: "Facebook", handle: "Datara Nigeria", color: "text-blue-600 bg-blue-50 dark:bg-blue-900/20" },
                                     ].map((social, i) => (
-                                        <div key={i} className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer group">
+                                        <div key={i} className="flex items-center gap-3 p-3 rounded-xl hover:bg-secondary transition-colors cursor-pointer group">
                                             <div className={`w-9 h-9 rounded-lg ${social.color} flex items-center justify-center text-sm font-bold flex-shrink-0`}>
                                                 {social.name.charAt(0)}
                                             </div>
                                             <div className="min-w-0">
-                                                <p className="text-xs text-gray-400 font-medium">{social.name}</p>
-                                                <p className="text-sm font-semibold text-gray-900 truncate">{social.handle}</p>
+                                                <p className="text-xs text-muted font-medium">{social.name}</p>
+                                                <p className="text-sm font-semibold text-primary truncate">{social.handle}</p>
                                             </div>
-                                            <svg className="w-4 h-4 text-gray-300 ml-auto flex-shrink-0 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <svg className="w-4 h-4 text-muted ml-auto flex-shrink-0 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                                             </svg>
                                         </div>
@@ -318,15 +318,15 @@ export default function Contact() {
             </section>
 
             {/* ═══ FAQ Section ═══ */}
-            <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 dark:bg-blue-900/10 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
                 </div>
 
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-14">
-                        <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Quick Answers</p>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                        <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Quick Answers</p>
+                        <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
                             Frequently Asked Questions
                         </h2>
                     </div>
@@ -354,14 +354,14 @@ export default function Contact() {
                                 a: "Click 'Forgot Password' on the login page, enter your registered email, and you'll receive an OTP to create a new password. The OTP expires after 10 minutes.",
                             },
                         ].map((faq, i) => (
-                            <details key={i} className="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden hover:bg-gray-100/50 transition-colors">
-                                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-semibold text-gray-900 text-sm sm:text-base">
+                            <details key={i} className="group bg-secondary rounded-xl border border-primary overflow-hidden hover:bg-secondary/80 transition-colors">
+                                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-semibold text-primary text-sm sm:text-base">
                                     <span>{faq.q}</span>
-                                    <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <svg className="w-5 h-5 text-muted flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </summary>
-                                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                                <div className="px-5 pb-5 text-sm text-secondary leading-relaxed">
                                     {faq.a}
                                 </div>
                             </details>
@@ -371,9 +371,9 @@ export default function Contact() {
             </section>
 
             {/* ═══ Map / Location Section ═══ */}
-            <section className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <section className="py-16 sm:py-20 bg-gradient-to-b from-secondary to-primary">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-primary rounded-2xl shadow-sm border border-primary overflow-hidden">
                         <div className="grid grid-cols-1 md:grid-cols-2">
                             {/* Map placeholder */}
                             <div className="bg-gradient-to-br from-blue-100 to-cyan-50 flex items-center justify-center p-12 min-h-[280px]">
@@ -392,29 +392,29 @@ export default function Contact() {
 
                             {/* Office Info */}
                             <div className="p-8 sm:p-10 flex flex-col justify-center">
-                                <h3 className="text-xl font-extrabold text-gray-900 mb-4">Our Office</h3>
-                                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                                <h3 className="text-xl font-extrabold text-primary mb-4">Our Office</h3>
+                                <p className="text-secondary text-sm leading-relaxed mb-6">
                                     Located in the heart of Lagos&apos;s tech district, our office is open for
                                     walk-in support Wednesday through Friday. We recommend booking an appointment
                                     for a smoother experience.
                                 </p>
                                 <div className="space-y-3">
                                     <div className="flex items-center gap-3 text-sm">
-                                        <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <div className="w-8 h-8 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                             <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                                             </svg>
                                         </div>
-                                        <span className="text-gray-600">123 Tech Hub, Victoria Island, Lagos</span>
+                                        <span className="text-secondary">123 Tech Hub, Victoria Island, Lagos</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-sm">
-                                        <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <div className="w-8 h-8 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                             <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
                                         </div>
-                                        <span className="text-gray-600">Walk-ins: Wed – Fri, 10am – 4pm</span>
+                                        <span className="text-secondary">Walk-ins: Wed – Fri, 10am – 4pm</span>
                                     </div>
                                 </div>
                             </div>

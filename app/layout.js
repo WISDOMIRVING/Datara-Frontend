@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import InstallPrompt from "../components/InstallPrompt";
+import MouseGlow from "../components/MouseGlow";
 import { AuthProvider } from "../context/AuthContext";
 
 export const metadata = {
@@ -43,7 +44,8 @@ export default function RootLayout({ children }) {
         />
         <meta name="apple-mobile-web-app-title" content="Datara" />
       </head>
-      <body className="bg-gray-50 text-gray-900">
+      <body className="antialiased font-sans">
+        <MouseGlow />
         <AuthProvider>
           <Navbar />
           <main className="pt-16 min-h-screen">{children}</main>

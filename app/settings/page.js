@@ -75,126 +75,126 @@ function SettingsContent() {
     };
 
     return (
-        <div className="bg-[var(--bg-primary)] transition-colors duration-300 py-12">
+        <div className="bg-primary transition-colors duration-300 py-12">
             <div className="max-w-3xl mx-auto p-4 sm:p-8">
-                <h1 className="text-3xl font-bold mb-8 text-[var(--text-primary)]">
+                <h1 className="text-4xl font-black mb-8 text-primary tracking-tighter italic">
                     Settings
                 </h1>
 
                 {/* Profile Information Form */}
-                <div className="glass p-6 sm:p-8 rounded-2xl shadow-md mb-8">
-                    <h2 className="text-2xl font-bold mb-6 text-[var(--text-primary)]">
+                <div className="glass p-6 sm:p-8 rounded-[2.5rem] border border-primary shadow-xl mb-12">
+                    <h2 className="text-2xl font-black mb-6 text-primary tracking-tight">
                         Profile Information
                     </h2>
                     {profileMessage && (
-                        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-4 py-3 rounded-xl relative mb-6 font-bold text-sm" role="alert">
                             <span className="block sm:inline">{profileMessage}</span>
                         </div>
                     )}
                     {profileError && (
-                        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-4 py-3 rounded-xl relative mb-6 font-bold text-sm" role="alert">
                             <span className="block sm:inline">{profileError}</span>
                         </div>
                     )}
-                    <form onSubmit={handleProfileSubmit} className="space-y-4">
+                    <form onSubmit={handleProfileSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-[var(--text-primary)] opacity-80">
+                            <label className="block text-sm font-bold text-secondary mb-2 uppercase tracking-widest ml-1">
                                 Full Name
                             </label>
                             <input
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-[var(--text-primary)] px-3 py-2"
+                                className="block w-full rounded-2xl border border-primary bg-secondary text-primary shadow-sm focus:ring-2 focus:ring-blue-500 outline-none sm:text-sm px-4 py-3 transition-all"
                                 required
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-[var(--text-primary)] opacity-80">
+                            <label className="block text-sm font-bold text-secondary mb-2 uppercase tracking-widest ml-1">
                                 Email Address
                             </label>
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-[var(--text-primary)] px-3 py-2"
+                                className="block w-full rounded-2xl border border-primary bg-secondary text-primary shadow-sm focus:ring-2 focus:ring-blue-500 outline-none sm:text-sm px-4 py-3 transition-all"
                                 required
                             />
                         </div>
-                        <div>
+                        <div className="pt-2">
                             <button
                                 type="submit"
                                 disabled={profileLoading}
-                                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors disabled:opacity-50"
+                                className="bg-blue-600 text-white px-8 py-3 rounded-2xl font-black text-sm hover:bg-blue-700 transition-all disabled:opacity-50 shadow-lg shadow-blue-500/20 active:scale-95"
                             >
-                                {profileLoading ? "Saving..." : "Save Profile"}
+                                {profileLoading ? "SAVING..." : "SAVE PROFILE"}
                             </button>
                         </div>
                     </form>
                 </div>
 
                 {/* Change Password Form */}
-                <div className="glass p-6 sm:p-8 rounded-2xl shadow-md">
-                    <h2 className="text-2xl font-bold mb-6 text-[var(--text-primary)]">
-                        Change Password
+                <div className="glass p-6 sm:p-8 rounded-[2.5rem] border border-primary shadow-xl">
+                    <h2 className="text-2xl font-black mb-6 text-primary tracking-tight">
+                        Security
                     </h2>
                     {passwordError && (
-                        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-4 py-3 rounded-xl relative mb-6 font-bold text-sm" role="alert">
                             <span className="block sm:inline">{passwordError}</span>
                         </div>
                     )}
                     {passwordMessage && (
-                        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-4 py-3 rounded-xl relative mb-6 font-bold text-sm" role="alert">
                             <span className="block sm:inline">{passwordMessage}</span>
                         </div>
                     )}
-                    <form onSubmit={handlePasswordSubmit} className="space-y-4">
+                    <form onSubmit={handlePasswordSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-[var(--text-primary)] opacity-80">
-                                Current Password:
+                            <label className="block text-sm font-bold text-secondary mb-2 uppercase tracking-widest ml-1">
+                                Current Password
                             </label>
                             <input
                                 type="password"
                                 value={oldPassword}
                                 onChange={(e) => setOldPassword(e.target.value)}
-                                className="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-[var(--text-primary)] px-3 py-2"
+                                className="block w-full rounded-2xl border border-primary bg-secondary text-primary shadow-sm focus:ring-2 focus:ring-blue-500 outline-none sm:text-sm px-4 py-3 transition-all"
                                 required
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-[var(--text-primary)] opacity-80">
-                                New Password:
+                            <label className="block text-sm font-bold text-secondary mb-2 uppercase tracking-widest ml-1">
+                                New Password
                             </label>
                             <input
                                 type="password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                className="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-[var(--text-primary)] px-3 py-2"
+                                className="block w-full rounded-2xl border border-primary bg-secondary text-primary shadow-sm focus:ring-2 focus:ring-blue-500 outline-none sm:text-sm px-4 py-3 transition-all"
                                 required
                             />
-                            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                Must be at least 6 characters long.
+                            <p className="mt-2 text-[10px] text-secondary font-bold uppercase tracking-widest ml-1">
+                                Minimum 6 characters
                             </p>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-[var(--text-primary)] opacity-80">
-                                Confirm New Password:
+                            <label className="block text-sm font-bold text-secondary mb-2 uppercase tracking-widest ml-1">
+                                Confirm New Password
                             </label>
                             <input
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="mt-1 block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-[var(--text-primary)] px-3 py-2"
+                                className="block w-full rounded-2xl border border-primary bg-secondary text-primary shadow-sm focus:ring-2 focus:ring-blue-500 outline-none sm:text-sm px-4 py-3 transition-all"
                                 required
                             />
                         </div>
-                        <div>
+                        <div className="pt-2">
                             <button
                                 type="submit"
                                 disabled={passwordLoading}
-                                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors disabled:opacity-50"
+                                className="bg-blue-600 text-white px-8 py-3 rounded-2xl font-black text-sm hover:bg-blue-700 transition-all disabled:opacity-50 shadow-lg shadow-blue-500/20 active:scale-95"
                             >
-                                {passwordLoading ? "Changing..." : "Change Password"}
+                                {passwordLoading ? "CHANGING..." : "UPDATE PASSWORD"}
                             </button>
                         </div>
                     </form>

@@ -54,27 +54,27 @@ export default function Help() {
     };
 
     return (
-        <div className="bg-[var(--bg-primary)] min-h-screen">
+        <div className="bg-primary min-h-screen">
             <div className="max-w-4xl mx-auto px-4 py-8 h-[calc(100vh-80px)] flex flex-col">
                 <div className="text-center mb-6">
-                    <h1 className="text-3xl font-extrabold text-[var(--text-primary)]">
+                    <h1 className="text-3xl font-extrabold text-primary">
                         AI Support Hub
                     </h1>
-                    <p className="text-[var(--text-primary)] opacity-60">Instant answers 24/7</p>
+                    <p className="text-secondary">Instant answers 24/7</p>
                 </div>
 
-                <div className="flex-grow glass rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-gray-100 dark:border-gray-800">
+                <div className="flex-grow glass rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-primary">
                     {/* Chat Window */}
-                    <div className="flex-grow p-4 md:p-6 overflow-y-auto space-y-4 bg-gray-50/50 dark:bg-gray-900/50">
+                    <div className="flex-grow p-4 md:p-6 overflow-y-auto space-y-4 bg-primary transition-colors duration-500">
                         {messages.map((msg, idx) => (
                             <div
                                 key={idx}
                                 className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                             >
                                 <div
-                                    className={`max-w-[85%] px-5 py-3 rounded-2xl shadow-sm text-sm md:text-base ${msg.sender === "user"
-                                            ? "bg-blue-900 text-white rounded-tr-none"
-                                            : "bg-white dark:bg-gray-800 text-[var(--text-primary)] rounded-tl-none border border-gray-100 dark:border-gray-700"
+                                    className={`max-w-[85%] px-5 py-3 rounded-2xl shadow-sm text-sm md:text-base transition-all duration-300 ${msg.sender === "user"
+                                        ? "bg-blue-600 text-white rounded-tr-none shadow-lg shadow-blue-500/20"
+                                        : "glass bg-secondary/50 text-primary rounded-tl-none border border-primary"
                                         }`}
                                 >
                                     {msg.text}
@@ -83,7 +83,7 @@ export default function Help() {
                         ))}
                         {isTyping && (
                             <div className="flex justify-start">
-                                <div className="bg-white dark:bg-gray-800 px-5 py-3 rounded-2xl rounded-tl-none border border-gray-100 dark:border-gray-700">
+                                <div className="bg-primary px-5 py-3 rounded-2xl rounded-tl-none border border-primary">
                                     <div className="flex gap-1">
                                         <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
                                         <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
@@ -95,13 +95,12 @@ export default function Help() {
                         <div ref={messagesEndRef} />
                     </div>
 
-                    {/* Suggestions */}
-                    <div className="px-4 py-2 border-t border-gray-100 dark:border-gray-800 flex gap-2 overflow-x-auto no-scrollbar">
+                    <div className="px-4 py-2 border-t border-primary flex gap-2 overflow-x-auto no-scrollbar">
                         {suggestions.map((s, i) => (
                             <button
                                 key={i}
                                 onClick={() => handleSend(s)}
-                                className="whitespace-nowrap px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-[var(--text-primary)] hover:border-blue-500 transition shadow-sm"
+                                className="whitespace-nowrap px-3 py-1.5 bg-primary border border-primary rounded-full text-xs font-medium text-primary hover:border-blue-500 transition shadow-sm"
                             >
                                 {s}
                             </button>
@@ -109,16 +108,16 @@ export default function Help() {
                     </div>
 
                     {/* Input Area */}
-                    <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-800">
+                    <div className="p-4 bg-primary border-t border-primary">
                         <form
                             onSubmit={(e) => { e.preventDefault(); handleSend(input); }}
-                            className="flex gap-3 items-center bg-gray-100 dark:bg-gray-700 rounded-full px-4 py-1"
+                            className="flex gap-3 items-center bg-secondary rounded-full px-4 py-1"
                         >
                             <input
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                className="flex-grow bg-transparent py-3 text-sm text-[var(--text-primary)] outline-none"
+                                className="flex-grow bg-transparent py-3 text-sm text-primary outline-none"
                                 placeholder="Describe your issue..."
                             />
                             <button

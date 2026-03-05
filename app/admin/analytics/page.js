@@ -46,73 +46,76 @@ export default function AdminAnalytics() {
     const { overview, salesByService, revenueTrend, recentFunding } = stats;
 
     return (
-        <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-6 sm:space-y-8 pb-12">
+        <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-6 sm:space-y-8 pb-12 bg-primary min-h-screen">
             <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                    <h1 className="text-2xl sm:text-4xl font-black text-blue-900 tracking-tight">System Intelligence</h1>
-                    <p className="text-gray-500 font-medium text-sm">Real-time performance metrics and growth data</p>
+                    <h1 className="text-3xl sm:text-5xl font-black text-primary tracking-tighter italic">
+                        System <span className="text-blue-600">Intelligence</span>
+                    </h1>
+                    <p className="text-secondary font-medium text-sm opacity-70">Real-time performance metrics and growth data</p>
                 </div>
-                <div className="bg-blue-50 px-3 py-1.5 rounded-lg sm:rounded-xl text-blue-700 font-bold text-xs border border-blue-100 shadow-sm self-start">
-                    Updated: {new Date().toLocaleTimeString()}
+                <div className="bg-blue-500/10 px-4 py-2 rounded-xl text-blue-500 font-black text-[10px] border border-blue-500/20 shadow-sm self-start tracking-widest uppercase">
+                    UPDATED: {new Date().toLocaleTimeString()}
                 </div>
             </header>
 
             {/* Metric Overview Cards */}
             <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-                <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white border-0 shadow-2xl">
-                    <p className="text-blue-200 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">Total Users</p>
-                    <p className="text-2xl sm:text-4xl font-black mb-2">{overview.totalUsers.toLocaleString()}</p>
-                    <div className="w-full bg-blue-700/50 h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-blue-300 h-full w-[70%]"></div>
+                <Card className="bg-gradient-to-br from-blue-600 to-blue-900 text-white border-0 shadow-2xl relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <p className="text-blue-100 text-[10px] sm:text-xs font-black uppercase tracking-widest mb-1 opacity-80">Total Users</p>
+                    <p className="text-3xl sm:text-5xl font-black mb-3 italic tracking-tighter">{overview.totalUsers.toLocaleString()}</p>
+                    <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden backdrop-blur-md">
+                        <div className="bg-white h-full w-[70%] shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
                     </div>
                 </Card>
 
-                <Card className="bg-white border-2 border-blue-50 shadow-sm">
-                    <p className="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">System Liability</p>
-                    <p className="text-2xl sm:text-4xl font-black text-blue-900">₦{overview.systemLiability.toLocaleString()}</p>
-                    <p className="text-[10px] sm:text-xs text-blue-600 font-bold mt-2">Total user wallet balances</p>
+                <Card className="bg-secondary/50 border-primary shadow-xl group hover:border-blue-500/30 transition-all">
+                    <p className="text-secondary text-[10px] sm:text-xs font-black uppercase tracking-widest mb-1 opacity-60">System Liability</p>
+                    <p className="text-3xl sm:text-4xl font-black text-primary tracking-tighter italic">₦{overview.systemLiability.toLocaleString()}</p>
+                    <p className="text-[10px] sm:text-xs text-blue-500 font-black mt-3 tracking-wide uppercase">TOTAL WALLET BALANCES</p>
                 </Card>
 
-                <Card className="bg-white border-2 border-blue-50 shadow-sm">
-                    <p className="text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">VTU Conversions</p>
-                    <p className="text-2xl sm:text-4xl font-black text-blue-900">{overview.totalTransactions.toLocaleString()}</p>
-                    <p className="text-[10px] sm:text-xs text-emerald-600 font-bold mt-2">Successful transactions</p>
+                <Card className="bg-secondary/50 border-primary shadow-xl group hover:border-blue-500/30 transition-all">
+                    <p className="text-secondary text-[10px] sm:text-xs font-black uppercase tracking-widest mb-1 opacity-60">VTU Conversions</p>
+                    <p className="text-3xl sm:text-4xl font-black text-primary tracking-tighter italic">{overview.totalTransactions.toLocaleString()}</p>
+                    <p className="text-[10px] sm:text-xs text-emerald-500 font-black mt-3 tracking-wide uppercase">SUCCESSFUL TRANSACTIONS</p>
                 </Card>
             </section>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* Revenue Trend Chart */}
-                <Card className="p-4 sm:p-6 bg-white border-blue-50 border-2 shadow-xl hover:shadow-2xl transition-shadow">
-                    <h3 className="text-base sm:text-xl font-black text-blue-900 mb-4 sm:mb-6 flex items-center gap-2">
-                        <span className="p-1.5 sm:p-2 bg-blue-50 rounded-lg">📈</span> Revenue Trend (30d)
+                <Card className="p-4 sm:p-6 bg-secondary/30 border-primary shadow-2xl overflow-hidden relative">
+                    <h3 className="text-lg sm:text-2xl font-black text-primary mb-6 flex items-center gap-3 tracking-tight italic">
+                        <span className="p-2 bg-blue-500/10 rounded-xl text-xl">📈</span> Revenue Trend (30d)
                     </h3>
                     <div className="h-56 sm:h-80 w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={revenueTrend}>
                                 <defs>
                                     <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#1e3a8a" stopOpacity={0.8} />
-                                        <stop offset="95%" stopColor="#1e3a8a" stopOpacity={0} />
+                                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                                <XAxis dataKey="date" tick={{ fontSize: 9, fill: '#999' }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
-                                <YAxis tick={{ fontSize: 9, fill: '#999' }} axisLine={false} tickLine={false} width={45} />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
+                                <XAxis dataKey="date" tick={{ fontSize: 9, fill: 'currentColor', opacity: 0.5 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+                                <YAxis tick={{ fontSize: 9, fill: 'currentColor', opacity: 0.5 }} axisLine={false} tickLine={false} width={45} />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#fff', borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', fontSize: '11px' }}
+                                    contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', border: '1px solid var(--border-primary)', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.2)', fontSize: '11px', color: 'var(--text-primary)' }}
                                     itemStyle={{ fontWeight: 'bold', fontSize: '11px' }}
                                 />
-                                <Area type="monotone" dataKey="revenue" stroke="#1e3a8a" strokeWidth={2} fillOpacity={1} fill="url(#colorRev)" />
-                                <Area type="monotone" dataKey="profit" stroke="#10b981" strokeWidth={1.5} fill="transparent" />
+                                <Area type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
+                                <Area type="monotone" dataKey="profit" stroke="#10b981" strokeWidth={2} fill="transparent" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
                 </Card>
 
                 {/* Service Distribution */}
-                <Card className="p-4 sm:p-6 bg-white border-blue-50 border-2 shadow-xl hover:shadow-2xl transition-shadow">
-                    <h3 className="text-base sm:text-xl font-black text-blue-900 mb-4 sm:mb-6 flex items-center gap-2">
-                        <span className="p-1.5 sm:p-2 bg-blue-50 rounded-lg">🍕</span> Service Distribution
+                <Card className="p-4 sm:p-6 bg-secondary/30 border-primary shadow-2xl relative overflow-hidden">
+                    <h3 className="text-lg sm:text-2xl font-black text-primary mb-6 flex items-center gap-3 tracking-tight italic">
+                        <span className="p-2 bg-blue-500/10 rounded-xl text-xl">🍕</span> Service Distribution
                     </h3>
                     <div className="h-56 sm:h-80 w-full">
                         <ResponsiveContainer width="100%" height="100%">
@@ -121,17 +124,19 @@ export default function AdminAnalytics() {
                                     data={salesByService}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={45}
-                                    outerRadius={75}
-                                    paddingAngle={5}
+                                    innerRadius={60}
+                                    outerRadius={90}
+                                    paddingAngle={8}
                                     dataKey="value"
                                 >
                                     {salesByService.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} className="stroke-primary" strokeWidth={2} />
                                     ))}
                                 </Pie>
-                                <Tooltip />
-                                <Legend iconType="circle" wrapperStyle={{ fontSize: '11px' }} />
+                                <Tooltip
+                                    contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', border: '1px solid var(--border-primary)', fontSize: '11px', color: 'var(--text-primary)' }}
+                                />
+                                <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--text-primary)' }} />
                             </PieChart>
                         </ResponsiveContainer>
                     </div>
@@ -139,30 +144,30 @@ export default function AdminAnalytics() {
             </div>
 
             {/* Recent Activity — Mobile Cards + Desktop Table */}
-            <Card className="p-0 overflow-hidden bg-white border-blue-50 border-2 shadow-sm">
-                <div className="px-4 py-3 sm:p-6 border-b border-gray-100 flex justify-between items-center">
-                    <h3 className="text-base sm:text-xl font-black text-blue-900">Recent Wallet Funding</h3>
-                    <button className="text-blue-600 text-xs font-bold hover:underline">View All</button>
+            <Card className="p-0 overflow-hidden bg-secondary/30 border-primary shadow-2xl">
+                <div className="px-6 py-5 border-b border-primary flex justify-between items-center bg-secondary/50">
+                    <h3 className="text-xl font-black text-primary tracking-tight italic">Recent Wallet Funding</h3>
+                    <button className="text-blue-500 text-xs font-black uppercase tracking-widest hover:underline">View All</button>
                 </div>
 
                 {/* Mobile: Card Layout */}
-                <div className="sm:hidden divide-y divide-gray-50">
+                <div className="sm:hidden divide-y divide-primary">
                     {recentFunding.map((log) => (
-                        <div key={log._id} className="px-4 py-3">
-                            <div className="flex items-center justify-between mb-1.5">
+                        <div key={log._id} className="px-5 py-4 hover:bg-secondary/50 transition-colors">
+                            <div className="flex items-center justify-between mb-2">
                                 <div className="min-w-0 flex-1">
-                                    <p className="font-bold text-sm text-blue-950 truncate">{log.walletId?.userId?.name || "N/A"}</p>
-                                    <p className="text-[10px] text-gray-400 font-medium truncate">{log.walletId?.userId?.email}</p>
+                                    <p className="font-black text-sm text-primary truncate leading-tight">{log.walletId?.userId?.name || "N/A"}</p>
+                                    <p className="text-[10px] text-secondary font-bold truncate opacity-60 uppercase tracking-tighter">{log.walletId?.userId?.email}</p>
                                 </div>
-                                <span className="text-emerald-600 font-black text-sm ml-3 flex-shrink-0">
+                                <span className="text-emerald-500 font-black text-base ml-4 flex-shrink-0 italic">
                                     +₦{log.amount?.toLocaleString()}
                                 </span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <code className="text-[9px] bg-gray-100 px-1.5 py-0.5 rounded text-gray-500 font-mono">
+                                <code className="text-[9px] bg-blue-500/10 px-2 py-0.5 rounded-lg text-blue-500 font-black tracking-tighter ring-1 ring-blue-500/20">
                                     {log.reason?.split(" (Ref: ")?.[1]?.replace(")", "") || log._id.substring(0, 12)}
                                 </code>
-                                <span className="text-[10px] font-bold text-gray-400">
+                                <span className="text-[10px] font-black text-secondary opacity-40 uppercase tracking-widest">
                                     {new Date(log.createdAt).toLocaleDateString()}
                                 </span>
                             </div>
@@ -173,32 +178,32 @@ export default function AdminAnalytics() {
                 {/* Desktop: Table Layout */}
                 <div className="hidden sm:block overflow-x-auto">
                     <table className="w-full text-left text-xs">
-                        <thead className="bg-gray-50 text-[10px] uppercase font-black tracking-widest text-gray-400">
+                        <thead className="bg-secondary/50 text-[10px] uppercase font-black tracking-[0.2em] text-secondary opacity-60">
                             <tr>
-                                <th className="px-4 py-3">User</th>
-                                <th className="px-4 py-3">Amount</th>
-                                <th className="px-4 py-3">Reference</th>
-                                <th className="px-4 py-3">Date</th>
+                                <th className="px-6 py-4">User Identity</th>
+                                <th className="px-6 py-4">Amount</th>
+                                <th className="px-6 py-4">System Reference</th>
+                                <th className="px-6 py-4">Timestamp</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-50">
+                        <tbody className="divide-y divide-primary">
                             {recentFunding.map((log) => (
-                                <tr key={log._id} className="hover:bg-blue-50/30 transition-colors">
-                                    <td className="px-4 py-3">
-                                        <p className="font-bold text-xs text-blue-950">{log.walletId?.userId?.name || "N/A"}</p>
-                                        <p className="text-[10px] text-gray-400 font-medium">{log.walletId?.userId?.email}</p>
+                                <tr key={log._id} className="hover:bg-blue-500/5 transition-colors group">
+                                    <td className="px-6 py-4">
+                                        <p className="font-black text-sm text-primary group-hover:text-blue-500 transition-colors">{log.walletId?.userId?.name || "N/A"}</p>
+                                        <p className="text-[10px] text-secondary font-bold opacity-60 uppercase tracking-tighter">{log.walletId?.userId?.email}</p>
                                     </td>
-                                    <td className="px-4 py-3">
-                                        <span className="text-emerald-600 font-black text-xs">
+                                    <td className="px-6 py-4">
+                                        <span className="text-emerald-500 font-black text-sm italic">
                                             +₦{log.amount?.toLocaleString()}
                                         </span>
                                     </td>
-                                    <td className="px-4 py-3">
-                                        <code className="text-[10px] bg-gray-100 px-2 py-1 rounded text-gray-500 font-mono">
+                                    <td className="px-6 py-4">
+                                        <code className="text-[10px] bg-blue-500/10 px-3 py-1 rounded-xl text-blue-500 font-black ring-1 ring-blue-500/20">
                                             {log.reason?.split(" (Ref: ")?.[1]?.replace(")", "") || log._id.substring(0, 12)}
                                         </code>
                                     </td>
-                                    <td className="px-4 py-3 text-xs font-bold text-gray-500 whitespace-nowrap">
+                                    <td className="px-6 py-4 text-[10px] font-black text-secondary opacity-40 uppercase tracking-widest whitespace-nowrap">
                                         {new Date(log.createdAt).toLocaleDateString()}
                                     </td>
                                 </tr>

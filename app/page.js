@@ -171,7 +171,7 @@ export default function Home() {
       {/* ═══ Stats Strip ═══ */}
       <section className="relative -mt-8 z-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 sm:p-8">
+          <div className="bg-primary rounded-2xl shadow-xl shadow-gray-200/50 border border-primary p-6 sm:p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
               {[
                 {
@@ -179,28 +179,28 @@ export default function Home() {
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                     </svg>
-                  ), color: "text-blue-600 bg-blue-50"
+                  ), color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
                 },
                 {
                   value: "99.9%", label: "System Uptime", icon: (
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg>
-                  ), color: "text-amber-600 bg-amber-50"
+                  ), color: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20"
                 },
                 {
                   value: "< 5s", label: "Avg. Delivery", icon: (
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                  ), color: "text-emerald-600 bg-emerald-50"
+                  ), color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20"
                 },
                 {
                   value: "₦0", label: "Service Charges", icon: (
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                  ), color: "text-purple-600 bg-purple-50"
+                  ), color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20"
                 },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3 sm:gap-4">
@@ -208,8 +208,8 @@ export default function Home() {
                     {stat.icon}
                   </div>
                   <div>
-                    <p className="text-xl sm:text-2xl font-black text-blue-900 tracking-tight leading-none">{stat.value}</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5">{stat.label}</p>
+                    <p className="text-xl sm:text-2xl font-black text-primary tracking-tight leading-none">{stat.value}</p>
+                    <p className="text-[10px] sm:text-xs text-muted font-medium mt-0.5">{stat.label}</p>
                   </div>
                 </div>
               ))}
@@ -219,14 +219,14 @@ export default function Home() {
       </section>
 
       {/* ═══ Why Choose Datara ═══ */}
-      <section className="py-20 sm:py-28 bg-gray-50">
+      <section className="py-20 sm:py-28 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 sm:mb-20">
-            <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Why Datara</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-5 tracking-tight">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Why Datara</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-5 tracking-tight">
               Built Different. Built Better.
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-base sm:text-lg">
+            <p className="text-secondary max-w-xl mx-auto text-base sm:text-lg">
               We combine speed, security, and unbeatable prices to deliver an experience that just works.
             </p>
           </div>
@@ -266,14 +266,14 @@ export default function Home() {
             ].map((feature, i) => (
               <div
                 key={i}
-                className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group relative overflow-hidden"
+                className="bg-primary p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-primary group relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gray-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gray-50/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform`}>
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-500 leading-relaxed">{feature.desc}</p>
+                <h3 className="text-xl font-bold mb-3 text-primary">{feature.title}</h3>
+                <p className="text-secondary leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -281,17 +281,17 @@ export default function Home() {
       </section>
 
       {/* ═══ Services Overview ═══ */}
-      <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 dark:bg-blue-900/10 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-50 dark:bg-cyan-900/10 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image Side */}
             <div className="relative order-2 lg:order-1">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-100 to-cyan-50 rounded-3xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-100/50 to-cyan-50/50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl" />
               <Image
                 src="/images/home-services.png"
                 alt="Datara interconnected digital services"
@@ -300,22 +300,22 @@ export default function Home() {
                 className="relative rounded-2xl shadow-xl"
               />
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 sm:-right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5 border border-gray-100">
-                <p className="text-3xl font-black text-blue-900">5+</p>
-                <p className="text-xs text-gray-500 font-medium">Service<br />Categories</p>
+              <div className="absolute -bottom-4 -right-4 sm:-right-6 bg-primary rounded-2xl shadow-xl p-4 sm:p-5 border border-primary">
+                <p className="text-3xl font-black text-blue-900 dark:text-blue-300">5+</p>
+                <p className="text-xs text-secondary font-medium uppercase tracking-wider">Service<br />Categories</p>
               </div>
             </div>
 
             {/* Content Side */}
             <div className="order-1 lg:order-2">
-              <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Our Services</p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
+              <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Our Services</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-6 tracking-tight leading-tight">
                 Everything You Need,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                   One Platform
                 </span>
               </h2>
-              <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-secondary text-base sm:text-lg leading-relaxed mb-8">
                 Stop jumping between apps. Datara brings all your essential digital
                 services into one secure, easy-to-use platform with the best rates in Nigeria.
               </p>
@@ -327,8 +327,8 @@ export default function Home() {
                       {s.icon}
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">{s.title}</h4>
-                      <p className="text-sm text-gray-500">{s.desc}</p>
+                      <h4 className="font-bold text-primary">{s.title}</h4>
+                      <p className="text-sm text-secondary">{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -349,14 +349,14 @@ export default function Home() {
       </section>
 
       {/* ═══ How It Works ═══ */}
-      <section className="py-20 sm:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 sm:py-28 bg-gradient-to-b from-secondary to-primary">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 sm:mb-20">
-            <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">How It Works</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-5 tracking-tight">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">How It Works</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-5 tracking-tight">
               Three Simple Steps
             </h2>
-            <p className="text-gray-500 max-w-lg mx-auto text-base sm:text-lg">
+            <p className="text-secondary max-w-lg mx-auto text-base sm:text-lg">
               No hidden fees. No complicated setup. Just fast, simple service.
             </p>
           </div>
@@ -375,8 +375,8 @@ export default function Home() {
                   <span className="text-[10px] sm:text-xs font-bold tracking-widest text-blue-200">STEP</span>
                   <span className="text-2xl sm:text-3xl md:text-4xl font-black">{s.step}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto">{s.desc}</p>
+                <h3 className="text-xl font-bold text-primary mb-2">{s.title}</h3>
+                <p className="text-secondary text-sm leading-relaxed max-w-xs mx-auto">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -393,30 +393,30 @@ export default function Home() {
       </section>
 
       {/* ═══ Testimonials ═══ */}
-      <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-50 rounded-full blur-3xl opacity-40 translate-x-1/2 translate-y-1/2" />
+          <div className="absolute top-0 left-0 w-80 h-80 bg-blue-50 dark:bg-blue-900/10 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-50 dark:bg-cyan-900/10 rounded-full blur-3xl opacity-40 translate-x-1/2 translate-y-1/2" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Content Side */}
             <div>
-              <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Testimonials</p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight">
+              <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Testimonials</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-6 tracking-tight leading-tight">
                 Trusted by{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                   Thousands
                 </span>
               </h2>
-              <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-10">
+              <p className="text-secondary text-base sm:text-lg leading-relaxed mb-10">
                 Don&apos;t just take our word for it — hear from real users who trust Datara for their daily digital needs.
               </p>
 
               <div className="space-y-5">
                 {testimonials.map((t, i) => (
-                  <div key={i} className="bg-gray-50 rounded-2xl p-5 sm:p-6 border border-gray-100 hover:shadow-lg transition-shadow">
+                  <div key={i} className="bg-secondary rounded-2xl p-5 sm:p-6 border border-primary hover:shadow-lg transition-shadow">
                     <div className="flex items-center gap-1 mb-3">
                       {[...Array(t.rating)].map((_, j) => (
                         <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
@@ -424,14 +424,14 @@ export default function Home() {
                         </svg>
                       ))}
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-3 italic">&quot;{t.text}&quot;</p>
+                    <p className="text-primary text-sm leading-relaxed mb-3 italic opacity-80">&quot;{t.text}&quot;</p>
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-xs font-bold">
                         {t.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-gray-900">{t.name}</p>
-                        <p className="text-xs text-gray-400">{t.role}</p>
+                        <p className="text-sm font-bold text-primary">{t.name}</p>
+                        <p className="text-xs text-muted">{t.role}</p>
                       </div>
                     </div>
                   </div>
@@ -441,7 +441,7 @@ export default function Home() {
 
             {/* Image Side */}
             <div className="hidden lg:block relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl" />
               <Image
                 src="/images/home-trust.png"
                 alt="Happy Datara users with 5-star ratings"
@@ -450,7 +450,7 @@ export default function Home() {
                 className="relative rounded-2xl shadow-xl"
               />
               {/* Floating trust card */}
-              <div className="absolute -bottom-4 -left-4 sm:-left-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5 border border-gray-100">
+              <div className="absolute -bottom-4 -left-4 sm:-left-6 bg-primary rounded-2xl shadow-xl p-4 sm:p-5 border border-primary">
                 <div className="flex items-center gap-1 mb-1">
                   {[...Array(5)].map((_, j) => (
                     <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
@@ -458,8 +458,8 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-2xl font-black text-blue-900">4.9/5</p>
-                <p className="text-xs text-gray-500 font-medium">User Rating</p>
+                <p className="text-2xl font-black text-blue-900 dark:text-blue-300">4.9/5</p>
+                <p className="text-xs text-secondary font-medium uppercase tracking-wider">User Rating</p>
               </div>
             </div>
           </div>

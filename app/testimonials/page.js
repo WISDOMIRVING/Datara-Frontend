@@ -181,7 +181,7 @@ export default function Testimonials() {
             {/* ═══ Rating Breakdown ═══ */}
             <section className="relative -mt-8 z-20">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 sm:p-8">
+                    <div className="bg-primary rounded-2xl shadow-xl shadow-gray-200/50 border border-primary p-6 sm:p-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                             {[
                                 {
@@ -189,28 +189,28 @@ export default function Testimonials() {
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                                         </svg>
-                                    ), color: "text-amber-600 bg-amber-50"
+                                    ), color: "text-amber-600 bg-amber-50 dark:bg-amber-900/20"
                                 },
                                 {
                                     value: `${reviews.length}+`, label: "Happy Users", icon: (
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
                                         </svg>
-                                    ), color: "text-blue-600 bg-blue-50"
+                                    ), color: "text-blue-600 bg-blue-50 dark:bg-blue-900/20"
                                 },
                                 {
                                     value: "100%", label: "Would Recommend", icon: (
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
                                         </svg>
-                                    ), color: "text-emerald-600 bg-emerald-50"
+                                    ), color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20"
                                 },
                                 {
                                     value: "24/7", label: "Support Available", icon: (
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                                         </svg>
-                                    ), color: "text-purple-600 bg-purple-50"
+                                    ), color: "text-purple-600 bg-purple-50 dark:bg-purple-900/20"
                                 },
                             ].map((stat, i) => (
                                 <div key={i} className="flex items-center gap-3 sm:gap-4">
@@ -218,8 +218,8 @@ export default function Testimonials() {
                                         {stat.icon}
                                     </div>
                                     <div>
-                                        <p className="text-xl sm:text-2xl font-black text-blue-900 tracking-tight leading-none">{stat.value}</p>
-                                        <p className="text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5">{stat.label}</p>
+                                        <p className="text-xl sm:text-2xl font-black text-primary tracking-tight leading-none">{stat.value}</p>
+                                        <p className="text-[10px] sm:text-xs text-muted font-medium mt-0.5">{stat.label}</p>
                                     </div>
                                 </div>
                             ))}
@@ -229,11 +229,11 @@ export default function Testimonials() {
             </section>
 
             {/* ═══ Featured Testimonial ═══ */}
-            <section className="py-20 sm:py-28 bg-gray-50">
+            <section className="py-20 sm:py-28 bg-secondary">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-14">
-                        <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Featured Story</p>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+                        <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Featured Story</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">
                             Customer Spotlight
                         </h2>
                     </div>
@@ -258,7 +258,7 @@ export default function Testimonials() {
 
                         {/* Content */}
                         <div>
-                            <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 relative">
+                            <div className="bg-primary rounded-2xl p-8 sm:p-10 shadow-sm border border-primary relative">
                                 {/* Large quote mark */}
                                 <div className="absolute -top-6 left-8">
                                     <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl font-serif shadow-lg">
@@ -304,19 +304,19 @@ export default function Testimonials() {
             </section>
 
             {/* ═══ Category Filter + Reviews Grid ═══ */}
-            <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 dark:bg-blue-900/10 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-50 dark:bg-cyan-900/10 rounded-full blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-10 sm:mb-14">
-                        <p className="text-blue-600 font-bold text-sm uppercase tracking-widest mb-3">Community Voices</p>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-5 tracking-tight">
+                        <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-3">Community Voices</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-5 tracking-tight">
                             More Reviews From Real Users
                         </h2>
-                        <p className="text-gray-500 max-w-lg mx-auto text-base sm:text-lg">
+                        <p className="text-secondary max-w-lg mx-auto text-base sm:text-lg">
                             Filter by service category to find reviews most relevant to you.
                         </p>
                     </div>
@@ -328,8 +328,8 @@ export default function Testimonials() {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${activeCategory === cat
-                                        ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25"
-                                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                                     }`}
                             >
                                 {cat}
@@ -342,7 +342,7 @@ export default function Testimonials() {
                         {filteredReviews.map((review, i) => (
                             <div
                                 key={i}
-                                className="bg-white p-6 sm:p-7 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group relative overflow-hidden"
+                                className="bg-primary p-6 sm:p-7 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-primary group relative overflow-hidden"
                             >
                                 {/* Accent top bar */}
                                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${review.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
@@ -362,7 +362,7 @@ export default function Testimonials() {
                                 </div>
 
                                 {/* Review text */}
-                                <p className="text-gray-600 text-sm leading-relaxed mb-5 italic">
+                                <p className="text-secondary text-sm leading-relaxed mb-5 italic">
                                     &ldquo;{review.text}&rdquo;
                                 </p>
 
@@ -373,21 +373,21 @@ export default function Testimonials() {
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2">
-                                            <p className="text-sm font-bold text-gray-900 truncate">{review.name}</p>
+                                            <p className="text-sm font-bold text-primary truncate">{review.name}</p>
                                             {review.verified && (
-                                                <svg className="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg className="w-4 h-4 text-blue-500 dark:text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                                 </svg>
                                             )}
                                         </div>
-                                        <p className="text-xs text-gray-400">{review.role} · {review.location}</p>
+                                        <p className="text-xs text-muted">{review.role} · {review.location}</p>
                                     </div>
-                                    <span className="text-[10px] text-gray-300 font-medium flex-shrink-0">{review.date}</span>
+                                    <span className="text-[10px] text-muted font-medium flex-shrink-0">{review.date}</span>
                                 </div>
 
                                 {/* Category badge */}
-                                <div className="mt-4 pt-4 border-t border-gray-50">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                                <div className="mt-4 pt-4 border-t border-primary">
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted">
                                         {review.category}
                                     </span>
                                 </div>
@@ -398,10 +398,10 @@ export default function Testimonials() {
             </section>
 
             {/* ═══ Trust Badges ═══ */}
-            <section className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <section className="py-16 sm:py-20 bg-gradient-to-b from-secondary to-primary">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">
                             Why Customers Trust Us
                         </h2>
                     </div>
@@ -413,7 +413,7 @@ export default function Testimonials() {
                                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                                     </svg>
-                                ), label: "PCI Compliant", color: "text-blue-600"
+                                ), label: "PCI Compliant", color: "text-blue-600 dark:text-blue-400"
                             },
                             {
                                 icon: (
@@ -427,19 +427,19 @@ export default function Testimonials() {
                                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                ), label: "99.9% Uptime", color: "text-emerald-600"
+                                ), label: "99.9% Uptime", color: "text-emerald-600 dark:text-emerald-400"
                             },
                             {
                                 icon: (
                                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                                     </svg>
-                                ), label: "24/7 Support", color: "text-purple-600"
+                                ), label: "24/7 Support", color: "text-purple-600 dark:text-purple-400"
                             },
                         ].map((badge, i) => (
-                            <div key={i} className="text-center p-5 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div key={i} className="text-center p-5 rounded-2xl bg-primary shadow-sm border border-primary hover:shadow-md transition-shadow">
                                 <div className={`${badge.color} mx-auto mb-3`}>{badge.icon}</div>
-                                <p className="text-sm font-bold text-gray-700">{badge.label}</p>
+                                <p className="text-sm font-bold text-secondary">{badge.label}</p>
                             </div>
                         ))}
                     </div>

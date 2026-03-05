@@ -184,9 +184,9 @@ export default function Services() {
             </section>
 
             {/* ═══ Trust Metrics Bar ═══ */}
-            <section className="bg-white border-b border-gray-100 relative -mt-8 z-20">
+            <section className="bg-primary border-b border-primary relative -mt-8 z-20">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 sm:p-8">
+                    <div className="bg-primary rounded-2xl shadow-xl shadow-gray-200/50 border border-primary p-6 sm:p-8">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                             {[
                                 {
@@ -197,8 +197,8 @@ export default function Services() {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                                         </svg>
                                     ),
-                                    color: "text-blue-600",
-                                    bg: "bg-blue-50",
+                                    color: "text-blue-600 dark:text-blue-400",
+                                    bg: "bg-blue-50 dark:bg-blue-900/20",
                                 },
                                 {
                                     value: "99.9%",
@@ -208,8 +208,8 @@ export default function Services() {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                                         </svg>
                                     ),
-                                    color: "text-emerald-600",
-                                    bg: "bg-emerald-50",
+                                    color: "text-emerald-600 dark:text-emerald-400",
+                                    bg: "bg-emerald-50 dark:bg-emerald-900/20",
                                 },
                                 {
                                     value: "< 5 sec",
@@ -219,8 +219,8 @@ export default function Services() {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                                         </svg>
                                     ),
-                                    color: "text-amber-600",
-                                    bg: "bg-amber-50",
+                                    color: "text-amber-600 dark:text-amber-400",
+                                    bg: "bg-amber-50 dark:bg-amber-900/20",
                                 },
                                 {
                                     value: "₦0",
@@ -230,8 +230,8 @@ export default function Services() {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                                         </svg>
                                     ),
-                                    color: "text-purple-600",
-                                    bg: "bg-purple-50",
+                                    color: "text-purple-600 dark:text-purple-400",
+                                    bg: "bg-purple-50 dark:bg-purple-900/20",
                                 },
                             ].map((stat, i) => (
                                 <div key={i} className="flex items-center gap-3 sm:gap-4">
@@ -239,8 +239,8 @@ export default function Services() {
                                         {stat.icon}
                                     </div>
                                     <div>
-                                        <p className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight leading-none">{stat.value}</p>
-                                        <p className="text-[11px] sm:text-xs text-gray-400 font-medium mt-0.5">{stat.label}</p>
+                                        <p className="text-xl sm:text-2xl font-black text-primary tracking-tight leading-none">{stat.value}</p>
+                                        <p className="text-[11px] sm:text-xs text-muted font-medium mt-0.5">{stat.label}</p>
                                     </div>
                                 </div>
                             ))}
