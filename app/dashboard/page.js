@@ -159,44 +159,44 @@ function DashboardContent() {
       <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Sidebar — desktop only */}
-      <aside className="w-72 glass border-r border-primary hidden md:flex md:flex-col relative z-20">
-        <div className="p-8">
-          <Link href="/" className="text-3xl font-black text-primary tracking-tighter italic">
+      <aside className="w-64 glass border-r border-primary hidden md:flex md:flex-col relative z-20">
+        <div className="p-6">
+          <Link href="/" className="text-2xl font-black text-primary tracking-tighter italic">
             Datara<span className="text-blue-600">.</span>
           </Link>
         </div>
 
         <nav className="mt-4 px-6 space-y-3 flex-1">
-          <Link href="/dashboard" className="flex items-center gap-4 py-4 px-6 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/30 transition-all font-black text-xs tracking-widest uppercase italic border border-blue-400/20">
+          <Link href="/dashboard" className="flex items-center gap-4 py-2.5 px-4 rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/30 transition-all font-black text-xs tracking-widest uppercase italic border border-blue-400/20">
             <span className="text-lg">🏠</span> Dashboard
           </Link>
           <button
             onClick={() => setShowBuyDataModal(true)}
-            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
+            className="w-full flex items-center gap-4 py-2.5 px-4 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
           >
             <span className="text-lg">📶</span> Buy Data
           </button>
           <button
             onClick={() => setShowBuyAirtimeModal(true)}
-            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
+            className="w-full flex items-center gap-4 py-2.5 px-4 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
           >
             <span className="text-lg">📱</span> Airtime
           </button>
-          <Link href="/vtu/cable" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/vtu/cable" className="flex items-center gap-4 py-2.5 px-4 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">📺</span> Cable TV
           </Link>
-          <Link href="/vtu/electricity" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/vtu/electricity" className="flex items-center gap-4 py-2.5 px-4 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">💡</span> Electricity
           </Link>
-          <Link href="/settings" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/settings" className="flex items-center gap-4 py-2.5 px-4 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">⚙️</span> Settings
           </Link>
         </nav>
 
-        <div className="p-6">
+        <div className="p-4">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500 font-black text-xs tracking-widest uppercase transition-all hover:text-white group"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500 font-black text-[10px] tracking-widest uppercase transition-all hover:text-white group"
           >
             <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -207,11 +207,11 @@ function DashboardContent() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 px-4 py-8 md:p-12 pb-32 md:pb-12 relative z-10 overflow-auto">
+      <main className="flex-1 px-3 py-6 md:p-8 pb-24 md:pb-8 relative z-10 overflow-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
           <div className="flex items-center gap-5">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-[2rem] flex items-center justify-center text-white text-2xl md:text-3xl font-black shadow-2xl ring-8 ring-blue-500/10 flex-shrink-0 animate-pulse">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center text-white text-xl md:text-2xl font-black shadow-2xl ring-4 ring-blue-500/10 flex-shrink-0 animate-pulse">
               {user?.name
                 ? user.name.trim().split(" ").length >= 2
                   ? (user.name.trim().split(" ")[0][0] + user.name.trim().split(" ")[1][0]).toUpperCase()
@@ -219,7 +219,7 @@ function DashboardContent() {
                 : "U"}
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-black text-primary tracking-tighter italic">
+              <h1 className="text-xl md:text-2xl font-black text-primary tracking-tighter italic">
                 Welcome <span className="text-blue-600">{user?.name?.split(" ")[0] || "User"}</span>
               </h1>
               <p className="text-xs md:text-sm text-secondary dark:text-secondary/70 font-black uppercase tracking-widest opacity-60 dark:opacity-40 mt-1 italic">
@@ -244,17 +244,17 @@ function DashboardContent() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-6">
           {/* Wallet Card */}
-          <div className="lg:col-span-2 glass rounded-2xl p-8 md:p-12 border-primary shadow-2xl relative overflow-hidden group bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950">
-            <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
-              <span className="text-9xl">💰</span>
+          <div className="lg:col-span-2 glass rounded-2xl p-6 md:p-8 border-primary shadow-2xl relative overflow-hidden group bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span className="text-7xl">💰</span>
             </div>
 
             <p className="text-blue-200 dark:text-blue-200 text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-100 dark:opacity-70 italic">Available Liquidity</p>
-            <div className="flex items-baseline gap-3 mb-8">
-              <span className="text-2xl md:text-3xl font-black text-white italic">₦</span>
-              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic leading-none">
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-xl md:text-2xl font-black text-white italic">₦</span>
+              <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter italic leading-none">
                 {walletBalance?.toLocaleString("en-NG", { minimumFractionDigits: 2 }) || "0.00"}
               </h2>
             </div>
@@ -274,14 +274,14 @@ function DashboardContent() {
           </div>
 
           {/* Refer & Earn */}
-          <div className="glass rounded-2xl p-8 md:p-10 border-primary shadow-2xl border border-blue-600/20 relative overflow-hidden flex flex-col justify-between">
+          <div className="glass rounded-2xl p-6 border-primary shadow-2xl border border-blue-600/20 relative overflow-hidden flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-black text-primary mb-2 italic">Refer & Earn</h3>
               <p className="text-secondary dark:text-secondary/60 text-sm font-medium opacity-100 dark:opacity-60 leading-relaxed mb-6">Earn ₦100 for every active user you onboard.</p>
 
-              <div className="bg-secondary/50 dark:bg-secondary/50 p-4 rounded-2xl border border-primary flex flex-col items-center mb-6">
+              <div className="bg-secondary/50 dark:bg-secondary/50 p-4 rounded-2xl border border-primary flex flex-col items-center mb-4">
                 <span className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-80 dark:opacity-50 mb-1">Your Code</span>
-                <span className="text-2xl font-black text-blue-600 tracking-widest">{user?.referralCode || "------"}</span>
+                <span className="text-xl font-black text-blue-600 tracking-widest">{user?.referralCode || "------"}</span>
               </div>
             </div>
 
@@ -299,11 +299,11 @@ function DashboardContent() {
         </div>
 
         {/* Quick Actions */}
-        <div className="mb-12">
+        <div className="mb-6">
           <h3 className="text-xs font-black text-secondary dark:text-secondary uppercase tracking-[0.4em] mb-6 flex items-center gap-4 opacity-80 dark:opacity-100">
             Instant Services <div className="h-px bg-primary flex-1 opacity-20 dark:opacity-20"></div>
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
             {quickActions.map((action, idx) => {
               const Wrapper = action.href ? Link : "button";
               const wrapperProps = action.href
@@ -311,8 +311,8 @@ function DashboardContent() {
                 : { onClick: action.onClick, type: "button" };
               return (
                 <Wrapper key={idx} {...wrapperProps} className="group">
-                  <div className="glass p-4 rounded-2xl border-primary flex flex-col items-center justify-center gap-3 hover:border-blue-500/50 transition-all hover:shadow-2xl hover:-translate-y-1 active:scale-95 h-full">
-                    <div className="text-3xl group-hover:scale-110 transition-transform duration-500">
+                  <div className="glass p-3 rounded-2xl border-primary flex flex-col items-center justify-center gap-2 hover:border-blue-500/50 transition-all hover:shadow-2xl hover:-translate-y-1 active:scale-95 h-full">
+                    <div className="text-2xl group-hover:scale-110 transition-transform duration-500">
                       {action.icon}
                     </div>
                     <span className="text-[10px] font-black text-primary uppercase tracking-widest text-center">
@@ -327,8 +327,8 @@ function DashboardContent() {
 
         {/* Transaction History Section */}
         <div className="mt-12">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-black text-primary tracking-tighter italic">Ledger <span className="text-blue-600">History</span></h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-black text-primary tracking-tighter italic">Ledger <span className="text-blue-600">History</span></h3>
             <p className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-60 dark:opacity-30">Real-time Propagation Enabled</p>
           </div>
           <div className="glass rounded-2xl border-primary shadow-2xl overflow-hidden p-2">
@@ -538,7 +538,7 @@ function DashboardContent() {
 
       {/* Mobile Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-primary border-t border-primary md:hidden z-40">
-        <div className="flex items-center justify-around py-2">
+        <div className="flex items-center justify-around py-1">
           <Link href="/dashboard" className="flex flex-col items-center gap-0.5 px-2 py-1 text-blue-600 dark:text-blue-400">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
