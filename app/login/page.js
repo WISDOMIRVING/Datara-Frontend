@@ -28,7 +28,9 @@ export default function Login() {
       setMessage("Login successful! Redirecting...");
       setTimeout(() => router.push("/dashboard"), 500);
     } catch (err) {
-      setMessage(err.response?.data?.message || "Login failed");
+      // Robust error message extraction
+      const errorMsg = err.response?.data?.message || err.message || "Login failed";
+      setMessage(errorMsg);
     } finally {
       setLoading(false);
     }
