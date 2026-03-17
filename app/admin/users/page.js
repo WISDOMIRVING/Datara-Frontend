@@ -10,7 +10,10 @@ export default function AdminUsers() {
   useEffect(() => {
     api.get("/admin/users")
       .then((res) => setUsers(res.data.data || []))
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err);
+        setUsers(null);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -41,7 +44,15 @@ export default function AdminUsers() {
       </h1>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {users.length === 0 ? (
+        {users === null ? (
+          <div className="col-span-full">
+            <Card className="text-center py-12 border-primary bg-secondary/30">
+              <span className="text-4xl mb-4 block">🔒</span>
+              <p className="text-primary font-black uppercase text-xs tracking-widest mb-2">Unauthorized or Connection Issue</p>
+              <p className="text-secondary text-xs font-bold opacity-60">We couldn't load the user list. If you just became an admin, please log out and log back in to refresh your access.</p>
+            </Card>
+          </div>
+        ) : users.length === 0 ? (
           <p className="col-span-full text-center py-12 text-secondary opacity-50">No users found.</p>
         ) : (
           users.map((u) => (

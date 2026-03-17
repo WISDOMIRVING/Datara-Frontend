@@ -12,7 +12,10 @@ export default function AdminTransactions() {
       .then(res => {
         setTx(res.data.data || []);
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err);
+        setTx(null); // Signal error state
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -50,7 +53,13 @@ export default function AdminTransactions() {
       </h1>
 
       <div className="grid gap-6">
-        {tx.length === 0 ? (
+        {tx === null ? (
+          <Card className="text-center py-12 border-primary bg-secondary/30">
+            <span className="text-4xl mb-4 block">🚫</span>
+            <p className="text-primary font-black uppercase text-xs tracking-widest mb-2">Access Denied or Error</p>
+            <p className="text-secondary text-xs font-bold opacity-60">We couldn't load the transaction history. If you just became an admin, please log out and log back in.</p>
+          </Card>
+        ) : tx.length === 0 ? (
           <p className="text-center py-12 text-secondary opacity-50">No transactions found in history.</p>
         ) : (
           tx.map(t => (

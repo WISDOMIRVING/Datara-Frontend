@@ -27,7 +27,10 @@ export default function AdminAnalytics() {
     useEffect(() => {
         api.get("/admin/stats")
             .then((res) => setStats(res.data.data))
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err);
+                setStats(null);
+            })
             .finally(() => setLoading(false));
     }, []);
 
@@ -39,6 +42,19 @@ export default function AdminAnalytics() {
                     {[1, 2, 3].map(i => <div key={i} className="h-28 bg-gray-100 rounded-2xl"></div>)}
                 </div>
                 <div className="h-64 bg-gray-100 rounded-2xl"></div>
+            </div>
+        );
+    }
+
+    if (!stats) {
+        return (
+            <div className="p-8 text-center bg-primary min-h-screen">
+                <Card className="max-w-md mx-auto p-12 border-primary bg-secondary/30">
+                    <span className="text-6xl mb-6 block italic">📉</span>
+                    <h2 className="text-2xl font-black text-primary tracking-tighter mb-4 italic">No Data <span className="text-blue-600">Available</span></h2>
+                    <p className="text-secondary text-sm font-medium mb-8 leading-relaxed">We couldn't retrieve the system intelligence data. Please ensure you are logged in as an administrator.</p>
+                    <button onClick={() => window.location.reload()} className="w-full py-4 bg-blue-600 text-white font-black rounded-2xl shadow-xl active:scale-95 transition-all tracking-widest uppercase text-xs">Refresh Dashboard</button>
+                </Card>
             </div>
         );
     }
