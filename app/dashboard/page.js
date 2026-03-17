@@ -172,23 +172,23 @@ function DashboardContent() {
           </Link>
           <button
             onClick={() => setShowBuyDataModal(true)}
-            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
+            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
           >
             <span className="text-lg">📶</span> Buy Data
           </button>
           <button
             onClick={() => setShowBuyAirtimeModal(true)}
-            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
+            className="w-full flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase"
           >
             <span className="text-lg">📱</span> Airtime
           </button>
-          <Link href="/vtu/cable" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/vtu/cable" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">📺</span> Cable TV
           </Link>
-          <Link href="/vtu/electricity" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/vtu/electricity" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">💡</span> Electricity
           </Link>
-          <Link href="/settings" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
+          <Link href="/settings" className="flex items-center gap-4 py-4 px-6 rounded-2xl text-secondary dark:text-secondary hover:bg-secondary/50 transition-all font-black text-xs tracking-widest uppercase text-left">
             <span className="text-lg">⚙️</span> Settings
           </Link>
         </nav>
@@ -222,7 +222,7 @@ function DashboardContent() {
               <h1 className="text-3xl md:text-5xl font-black text-primary tracking-tighter italic">
                 Welcome <span className="text-blue-600">{user?.name?.split(" ")[0] || "User"}</span>
               </h1>
-              <p className="text-xs md:text-sm text-secondary font-black uppercase tracking-widest opacity-40 mt-1 italic">
+              <p className="text-xs md:text-sm text-secondary dark:text-secondary/70 font-black uppercase tracking-widest opacity-60 dark:opacity-40 mt-1 italic">
                 {user?.email || "Control Center Authentication Verified"}
               </p>
             </div>
@@ -251,7 +251,7 @@ function DashboardContent() {
               <span className="text-9xl">💰</span>
             </div>
 
-            <p className="text-blue-200 text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-70 italic">Available Liquidity</p>
+            <p className="text-blue-200 dark:text-blue-200 text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-100 dark:opacity-70 italic">Available Liquidity</p>
             <div className="flex items-baseline gap-4 mb-10">
               <span className="text-3xl md:text-5xl font-black text-white italic">₦</span>
               <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter italic leading-none">
@@ -277,10 +277,10 @@ function DashboardContent() {
           <div className="glass rounded-[3rem] p-8 md:p-10 border-primary shadow-2xl border border-blue-600/20 relative overflow-hidden flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-black text-primary mb-2 italic">Refer & Earn</h3>
-              <p className="text-secondary text-sm font-medium opacity-60 leading-relaxed mb-6">Earn ₦100 for every active user you onboard.</p>
+              <p className="text-secondary dark:text-secondary/60 text-sm font-medium opacity-100 dark:opacity-60 leading-relaxed mb-6">Earn ₦100 for every active user you onboard.</p>
 
-              <div className="bg-secondary/50 p-6 rounded-3xl border border-primary flex flex-col items-center mb-6">
-                <span className="text-[10px] text-secondary font-black uppercase tracking-widest opacity-50 mb-1">Your Code</span>
+              <div className="bg-secondary/50 dark:bg-secondary/50 p-6 rounded-3xl border border-primary flex flex-col items-center mb-6">
+                <span className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-80 dark:opacity-50 mb-1">Your Code</span>
                 <span className="text-3xl font-black text-blue-600 tracking-widest">{user?.referralCode || "------"}</span>
               </div>
             </div>
@@ -300,8 +300,8 @@ function DashboardContent() {
 
         {/* Quick Actions */}
         <div className="mb-12">
-          <h3 className="text-xs font-black text-secondary uppercase tracking-[0.4em] mb-6 flex items-center gap-4">
-            Instant Services <div className="h-px bg-primary flex-1 opacity-20"></div>
+          <h3 className="text-xs font-black text-secondary dark:text-secondary uppercase tracking-[0.4em] mb-6 flex items-center gap-4 opacity-80 dark:opacity-100">
+            Instant Services <div className="h-px bg-primary flex-1 opacity-20 dark:opacity-20"></div>
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {quickActions.map((action, idx) => {
@@ -329,7 +329,7 @@ function DashboardContent() {
         <div className="mt-12">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-black text-primary tracking-tighter italic">Ledger <span className="text-blue-600">History</span></h3>
-            <p className="text-[10px] text-secondary font-black uppercase tracking-widest opacity-30">Real-time Propagation Enabled</p>
+            <p className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-60 dark:opacity-30">Real-time Propagation Enabled</p>
           </div>
           <div className="glass rounded-[3rem] border-primary shadow-2xl overflow-hidden p-2">
             <TransactionHistory />
@@ -357,13 +357,13 @@ function DashboardContent() {
 
               <form onSubmit={handleFundWallet} className="space-y-8 relative z-10">
                 <div>
-                  <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70 italic">Amount (₦)</label>
+                  <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70 italic">Amount (₦)</label>
                   <input
                     type="number"
                     min="100"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full px-8 py-5 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary text-2xl font-black tracking-tight italic"
+                    className="w-full px-8 py-5 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary text-2xl font-black tracking-tight italic"
                     placeholder="0.00"
                     required
                   />
@@ -405,23 +405,23 @@ function DashboardContent() {
 
               <form onSubmit={handleBuyData} className="space-y-6 relative z-10">
                 <div>
-                  <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Identity Number</label>
+                  <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Identity Number</label>
                   <input
                     type="tel"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="w-full px-6 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold"
+                    className="w-full px-6 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold"
                     placeholder="08012345678"
                     required
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Carrier</label>
+                    <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Carrier</label>
                     <select
                       value={selectedNetwork}
                       onChange={(e) => setSelectedNetwork(e.target.value)}
-                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
+                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
                     >
                       {Object.keys(dataPlans).map((net) => (
                         <option key={net} value={net} className="bg-primary text-primary">{net}</option>
@@ -429,11 +429,11 @@ function DashboardContent() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Plan Selection</label>
+                    <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Plan Selection</label>
                     <select
                       value={selectedPlan}
                       onChange={(e) => setSelectedPlan(e.target.value)}
-                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
+                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
                       required
                     >
                       <option value="" disabled className="bg-primary">Select</option>
@@ -480,23 +480,23 @@ function DashboardContent() {
 
               <form onSubmit={handleBuyAirtime} className="space-y-6 relative z-10">
                 <div>
-                  <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Identity Number</label>
+                  <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Identity Number</label>
                   <input
                     type="tel"
                     value={airtimePhone}
                     onChange={(e) => setAirtimePhone(e.target.value)}
-                    className="w-full px-6 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold"
+                    className="w-full px-6 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold"
                     placeholder="08012345678"
                     required
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Carrier</label>
+                    <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Carrier</label>
                     <select
                       value={airtimeNetwork}
                       onChange={(e) => setAirtimeNetwork(e.target.value)}
-                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
+                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold appearance-none cursor-pointer"
                     >
                       {Object.keys(dataPlans).map((net) => (
                         <option key={net} value={net} className="bg-primary text-primary">{net}</option>
@@ -504,13 +504,13 @@ function DashboardContent() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black text-secondary mb-3 uppercase tracking-widest ml-1 opacity-70">Refill Amount (₦)</label>
+                    <label className="block text-[10px] font-black text-secondary dark:text-secondary mb-3 uppercase tracking-widest ml-1 opacity-100 dark:opacity-70">Refill Amount (₦)</label>
                     <input
                       type="number"
                       min="50"
                       value={airtimeAmount}
                       onChange={(e) => setAirtimeAmount(e.target.value)}
-                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 text-primary font-bold"
+                      className="w-full px-4 py-4 border border-primary rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-secondary/30 dark:bg-secondary/30 text-primary font-bold"
                       placeholder="500"
                       required
                     />
