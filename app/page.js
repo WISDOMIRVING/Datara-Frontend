@@ -94,7 +94,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left animate-slide-up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cyan-300 text-sm font-semibold mb-8 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                 #1 VTU Platform in Nigeria
@@ -151,7 +151,7 @@ export default function Home() {
             </div>
 
             {/* Hero Image */}
-            <div className="hidden lg:flex items-center justify-center">
+            <div className="hidden lg:flex items-center justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <div className="relative">
                 <div className="absolute -inset-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-2xl" />
                 <Image
@@ -159,7 +159,7 @@ export default function Home() {
                   alt="Datara mobile dashboard showing data and airtime services"
                   width={580}
                   height={480}
-                  className="relative rounded-3xl shadow-2xl border border-white/10 drop-shadow-2xl"
+                  className="relative rounded-3xl shadow-2xl border border-white/10 drop-shadow-2xl img-hover-scale"
                   priority
                 />
               </div>
@@ -297,7 +297,7 @@ export default function Home() {
                 alt="Datara interconnected digital services"
                 width={560}
                 height={420}
-                className="relative rounded-2xl shadow-xl"
+                className="relative rounded-2xl shadow-xl img-hover-scale"
               />
               {/* Floating badge */}
               <div className="absolute -bottom-4 -right-4 sm:-right-6 bg-primary rounded-2xl shadow-xl p-4 sm:p-5 border border-primary">

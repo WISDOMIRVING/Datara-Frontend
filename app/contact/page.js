@@ -25,7 +25,7 @@ export default function Contact() {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="text-center lg:text-left">
+                        <div className="text-center lg:text-left animate-slide-up">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cyan-300 text-sm font-semibold mb-8 backdrop-blur-sm">
                                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                                 We&apos;re Online — Avg. Response: 5 min
@@ -57,7 +57,7 @@ export default function Contact() {
                         </div>
 
                         {/* Hero Image */}
-                        <div className="hidden lg:flex items-center justify-center">
+                        <div className="hidden lg:flex items-center justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
                             <div className="relative">
                                 <div className="absolute -inset-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-2xl" />
                                 <Image
@@ -65,7 +65,7 @@ export default function Contact() {
                                     alt="Datara customer support team"
                                     width={540}
                                     height={420}
-                                    className="relative rounded-3xl shadow-2xl border border-white/10"
+                                    className="relative rounded-3xl shadow-2xl border border-white/10 img-hover-scale"
                                     priority
                                 />
                             </div>

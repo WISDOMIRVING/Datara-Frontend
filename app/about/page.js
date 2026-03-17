@@ -72,7 +72,7 @@ export default function About() {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        <div className="text-center lg:text-left">
+                        <div className="text-center lg:text-left animate-slide-up">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cyan-300 text-sm font-semibold mb-8 backdrop-blur-sm">
                                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                                 About Datara
@@ -109,7 +109,7 @@ export default function About() {
                         </div>
 
                         {/* Hero Image */}
-                        <div className="hidden lg:flex items-center justify-center">
+                        <div className="hidden lg:flex items-center justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
                             <div className="relative">
                                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl" />
                                 <Image
@@ -117,7 +117,7 @@ export default function About() {
                                     alt="Datara team collaborating on digital services"
                                     width={560}
                                     height={400}
-                                    className="relative rounded-3xl shadow-2xl border border-white/10"
+                                    className="relative rounded-3xl shadow-2xl border border-white/10 img-hover-scale"
                                     priority
                                 />
                             </div>
@@ -160,7 +160,7 @@ export default function About() {
                                 alt="Digital connectivity through mobile payments"
                                 width={560}
                                 height={420}
-                                className="relative rounded-2xl shadow-xl"
+                                className="relative rounded-2xl shadow-xl img-hover-scale"
                             />
                             {/* Floating stat card */}
                             <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-primary rounded-2xl shadow-xl p-4 sm:p-5 border border-primary">
