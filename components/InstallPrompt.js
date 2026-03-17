@@ -18,8 +18,8 @@ export default function InstallPrompt() {
         const dismissed = localStorage.getItem("pwa-install-dismissed");
         if (dismissed) {
             const dismissedTime = parseInt(dismissed, 10);
-            const threeDays = 3 * 24 * 60 * 60 * 1000;
-            if (Date.now() - dismissedTime < threeDays) {
+            const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+            if (Date.now() - dismissedTime < thirtyDays) {
                 return;
             }
         }
@@ -28,7 +28,7 @@ export default function InstallPrompt() {
             e.preventDefault();
             setDeferredPrompt(e);
             // Show after a slight delay so it doesn't appear instantly on load
-            setTimeout(() => setShowPrompt(true), 3000);
+            setTimeout(() => setShowPrompt(true), 5000);
         };
 
         window.addEventListener("beforeinstallprompt", handler);

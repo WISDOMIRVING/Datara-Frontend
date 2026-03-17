@@ -235,8 +235,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-lg">
-          <div className="px-4 pt-3 pb-4 space-y-1">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-lg max-h-[calc(100vh-64px)] overflow-y-auto">
+          <div className="px-4 pt-3 pb-8 space-y-1">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
@@ -264,6 +264,20 @@ export default function Navbar() {
               className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Pricing
+            </Link>
+            <Link
+              href="/testimonials"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
+            >
+              Testimony
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-blue-900 hover:bg-gray-50 dark:hover:bg-gray-800"
+            >
+              Contact
             </Link>
             <Link
               href="/help"
