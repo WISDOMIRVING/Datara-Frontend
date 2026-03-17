@@ -42,8 +42,8 @@ export default function TransactionHistory() {
   }
 
   return (
-    <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-primary">
-      <h3 className="text-lg sm:text-xl font-bold text-primary mb-3 sm:mb-4">
+    <div className="glass rounded-xl p-3 sm:p-4 shadow-sm border border-primary">
+      <h3 className="text-base sm:text-lg font-bold text-primary mb-2 sm:mb-3">
         Recent Transactions
       </h3>
 
@@ -90,11 +90,11 @@ export default function TransactionHistory() {
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="text-secondary opacity-70 border-b border-primary">
-                  <th className="py-2.5 px-3 font-semibold">ID</th>
-                  <th className="py-2.5 px-3 font-semibold">Service</th>
-                  <th className="py-2.5 px-3 font-semibold">Amount</th>
-                  <th className="py-2.5 px-3 font-semibold">Date</th>
-                  <th className="py-2.5 px-3 font-semibold">Status</th>
+                  <th className="py-2 px-2 font-semibold">ID</th>
+                  <th className="py-2 px-2 font-semibold">Service</th>
+                  <th className="py-2 px-2 font-semibold">Amount</th>
+                  <th className="py-2 px-2 font-semibold">Date</th>
+                  <th className="py-2 px-2 font-semibold">Status</th>
                 </tr>
               </thead>
               <tbody className="text-primary">
@@ -103,11 +103,11 @@ export default function TransactionHistory() {
                     key={trx._id}
                     className="border-b border-primary hover:bg-secondary transition-colors"
                   >
-                    <td className="py-2 px-3 font-medium uppercase whitespace-nowrap">{trx._id.slice(-8)}</td>
-                    <td className="py-2 px-3 whitespace-nowrap">{trx.serviceType}</td>
-                    <td className="py-2 px-3 font-bold whitespace-nowrap">₦{trx.amount.toLocaleString()}</td>
-                    <td className="py-2 px-3 opacity-80 whitespace-nowrap">{new Date(trx.createdAt).toLocaleDateString()}</td>
-                    <td className="py-2 px-3">
+                    <td className="py-1.5 px-2 font-medium uppercase whitespace-nowrap">{trx._id.slice(-8)}</td>
+                    <td className="py-1.5 px-2 whitespace-nowrap">{trx.serviceType}</td>
+                    <td className="py-1.5 px-2 font-bold whitespace-nowrap">₦{trx.amount.toLocaleString()}</td>
+                    <td className="py-1.5 px-2 opacity-80 whitespace-nowrap">{new Date(trx.createdAt).toLocaleDateString()}</td>
+                    <td className="py-1.5 px-2">
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${statusStyle(trx.status)}`}
                       >

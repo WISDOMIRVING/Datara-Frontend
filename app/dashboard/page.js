@@ -219,7 +219,7 @@ function DashboardContent() {
                 : "U"}
             </div>
             <div>
-              <h1 className="text-3xl md:text-5xl font-black text-primary tracking-tighter italic">
+              <h1 className="text-2xl md:text-3xl font-black text-primary tracking-tighter italic">
                 Welcome <span className="text-blue-600">{user?.name?.split(" ")[0] || "User"}</span>
               </h1>
               <p className="text-xs md:text-sm text-secondary dark:text-secondary/70 font-black uppercase tracking-widest opacity-60 dark:opacity-40 mt-1 italic">
@@ -246,15 +246,15 @@ function DashboardContent() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Wallet Card */}
-          <div className="lg:col-span-2 glass rounded-[3rem] p-8 md:p-12 border-primary shadow-2xl relative overflow-hidden group bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950">
+          <div className="lg:col-span-2 glass rounded-2xl p-8 md:p-12 border-primary shadow-2xl relative overflow-hidden group bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950">
             <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
               <span className="text-9xl">💰</span>
             </div>
 
             <p className="text-blue-200 dark:text-blue-200 text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-100 dark:opacity-70 italic">Available Liquidity</p>
-            <div className="flex items-baseline gap-4 mb-10">
-              <span className="text-3xl md:text-5xl font-black text-white italic">₦</span>
-              <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter italic leading-none">
+            <div className="flex items-baseline gap-3 mb-8">
+              <span className="text-2xl md:text-3xl font-black text-white italic">₦</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic leading-none">
                 {walletBalance?.toLocaleString("en-NG", { minimumFractionDigits: 2 }) || "0.00"}
               </h2>
             </div>
@@ -274,14 +274,14 @@ function DashboardContent() {
           </div>
 
           {/* Refer & Earn */}
-          <div className="glass rounded-[3rem] p-8 md:p-10 border-primary shadow-2xl border border-blue-600/20 relative overflow-hidden flex flex-col justify-between">
+          <div className="glass rounded-2xl p-8 md:p-10 border-primary shadow-2xl border border-blue-600/20 relative overflow-hidden flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-black text-primary mb-2 italic">Refer & Earn</h3>
               <p className="text-secondary dark:text-secondary/60 text-sm font-medium opacity-100 dark:opacity-60 leading-relaxed mb-6">Earn ₦100 for every active user you onboard.</p>
 
-              <div className="bg-secondary/50 dark:bg-secondary/50 p-6 rounded-3xl border border-primary flex flex-col items-center mb-6">
+              <div className="bg-secondary/50 dark:bg-secondary/50 p-4 rounded-2xl border border-primary flex flex-col items-center mb-6">
                 <span className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-80 dark:opacity-50 mb-1">Your Code</span>
-                <span className="text-3xl font-black text-blue-600 tracking-widest">{user?.referralCode || "------"}</span>
+                <span className="text-2xl font-black text-blue-600 tracking-widest">{user?.referralCode || "------"}</span>
               </div>
             </div>
 
@@ -311,8 +311,8 @@ function DashboardContent() {
                 : { onClick: action.onClick, type: "button" };
               return (
                 <Wrapper key={idx} {...wrapperProps} className="group">
-                  <div className="glass p-6 rounded-[2rem] border-primary flex flex-col items-center justify-center gap-4 hover:border-blue-500/50 transition-all hover:shadow-2xl hover:-translate-y-2 active:scale-95 h-full">
-                    <div className="text-4xl group-hover:scale-125 transition-transform duration-500">
+                  <div className="glass p-4 rounded-2xl border-primary flex flex-col items-center justify-center gap-3 hover:border-blue-500/50 transition-all hover:shadow-2xl hover:-translate-y-1 active:scale-95 h-full">
+                    <div className="text-3xl group-hover:scale-110 transition-transform duration-500">
                       {action.icon}
                     </div>
                     <span className="text-[10px] font-black text-primary uppercase tracking-widest text-center">
@@ -331,7 +331,7 @@ function DashboardContent() {
             <h3 className="text-2xl font-black text-primary tracking-tighter italic">Ledger <span className="text-blue-600">History</span></h3>
             <p className="text-[10px] text-secondary dark:text-secondary font-black uppercase tracking-widest opacity-60 dark:opacity-30">Real-time Propagation Enabled</p>
           </div>
-          <div className="glass rounded-[3rem] border-primary shadow-2xl overflow-hidden p-2">
+          <div className="glass rounded-2xl border-primary shadow-2xl overflow-hidden p-2">
             <TransactionHistory />
           </div>
         </div>
@@ -339,7 +339,7 @@ function DashboardContent() {
         {/* Fund Wallet Modal Upgrade */}
         {showFundModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/80 backdrop-blur-xl animate-fade-in">
-            <div className="glass w-full max-w-md p-10 rounded-[3rem] border-primary shadow-2xl relative overflow-hidden">
+            <div className="glass w-full max-w-md p-10 rounded-2xl border-primary shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-10 opacity-10 pointer-events-none">
                 <span className="text-8xl">🏧</span>
               </div>
@@ -390,7 +390,7 @@ function DashboardContent() {
         {/* Buy Data Modal Upgrade */}
         {showBuyDataModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/80 backdrop-blur-xl animate-fade-in">
-            <div className="glass w-full max-w-md p-10 rounded-[3rem] border-primary shadow-2xl relative overflow-hidden">
+            <div className="glass w-full max-w-md p-6 sm:p-8 rounded-2xl border-primary shadow-2xl relative overflow-hidden">
               <button
                 onClick={() => { setShowBuyDataModal(false); setBuyMessage(""); }}
                 className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center rounded-full bg-secondary/50 text-primary hover:bg-secondary transition-all font-bold"
@@ -465,7 +465,7 @@ function DashboardContent() {
         {/* Buy Airtime Modal Upgrade */}
         {showBuyAirtimeModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/80 backdrop-blur-xl animate-fade-in">
-            <div className="glass w-full max-w-md p-10 rounded-[3rem] border-primary shadow-2xl relative overflow-hidden">
+            <div className="glass w-full max-w-md p-6 sm:p-8 rounded-2xl border-primary shadow-2xl relative overflow-hidden">
               <button
                 onClick={() => { setShowBuyAirtimeModal(false); setAirtimeMessage(""); }}
                 className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center rounded-full bg-secondary/50 text-primary hover:bg-secondary transition-all font-bold"
