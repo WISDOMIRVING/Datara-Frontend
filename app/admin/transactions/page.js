@@ -62,10 +62,18 @@ export default function AdminTransactions() {
                   </div>
                   <div>
                     <h3 className="text-xl font-black text-primary leading-tight">{t.serviceType}</h3>
-                    <p className="text-[10px] text-secondary font-bold uppercase tracking-widest mt-0.5 opacity-60">Reference: {t._id}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-1">
+                      <p className="text-[10px] text-blue-500 font-black uppercase tracking-widest leading-none">
+                        {t.userId?.name || "System"}
+                      </p>
+                      <p className="text-[9px] text-secondary font-bold truncate opacity-60 leading-none">
+                        {t.userId?.email || "internal@datara.system"}
+                      </p>
+                    </div>
+                    <p className="text-[9px] text-secondary font-bold uppercase tracking-widest mt-2 opacity-40">Ref: {t._id}</p>
                     <div className="flex items-center gap-2 mt-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30"></div>
-                      <p className="text-xs text-secondary font-medium tracking-tight">
+                      <p className="text-[10px] text-secondary font-medium tracking-tight">
                         {new Date(t.createdAt).toLocaleString()}
                       </p>
                     </div>
